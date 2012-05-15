@@ -66,6 +66,18 @@ namespace MashedVVM.Base
             }
         }
 
+		
+		public bool IsValid()
+        {
+            PropertyInfo[] properties = GetType().GetProperties();
+            foreach (PropertyInfo pi in properties)
+            {
+                if (!String.IsNullOrWhiteSpace(this[pi.Name]))
+                    return false;
+            }
+            return true;
+        }
+
 
         public virtual void Validate()
         {
