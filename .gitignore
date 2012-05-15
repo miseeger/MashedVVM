@@ -1,12 +1,3 @@
 # Build Folders (you can keep bin if you'd like, to store dlls and pdbs)
 obj
 bin
-_ReSharper.*
-*.csproj.user
-*.resharper.user
-*.resharper
-*.suo
-*.cache
-~$*.DS_Store
-.DS_Store
-._*
