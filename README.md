@@ -1,6 +1,10 @@
-MashedMVVM
+MashedVVM
 ==========
 
-A very lightweight MVVM Framework that provides a 'INotifyable' data class and ViewModel base classes.
+!!! This project is currently a work-in-progress so be aware that it's in ALPHA-State !!!
 
-This project is currently a work-in-progress so be aware that it's in ALPHA-State !!!
+MashedVVM is a very lightweight MVVM framework that brings an 'INotifyable' data class and 
+abstract ViewModel base classes plus an also abstract View base class. There are also Interfaces 
+provided which are implemented in those classes to have them ready-to-use in an IoC scenario 
+(like PRISM with Unity).
+
