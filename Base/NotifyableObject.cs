@@ -11,8 +11,11 @@
 
 using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+
+using MashedVVM.Base.Attributes;
 
 namespace MashedVVM.Base
 {
@@ -20,6 +23,39 @@ namespace MashedVVM.Base
 	{
 		
         public event PropertyChangedEventHandler PropertyChanged;   
+        
+        
+        public NotifyableObject() 
+    	{ 
+        	// Register Property-Triggers: 
+        	var methods = GetType() 
+        	    .GetMethods() 
+            	.Where(m => !m.IsSpecialName  
+                        	&& m.DeclaringType != typeof (DataObject)  
+                        	&& m.ReturnType == typeof (void)) 
+            	.ToList(); 
+ 
+        	foreach (var method in methods) 
+        	{ 
+	            var attributes = (method.GetCustomAttributes(typeof(TriggerPropertyAttribute), false) as TriggerPropertyAttribute[]) 
+                	.OrderBy(ca => ca.Order); 
+
+	            foreach (var attribute in attributes) 
+            	{ 
+	                TriggerPropertyAttribute attributeOfMethod = attribute; 
+                	MethodInfo methodOfObject = method; 
+
+	                this.PropertyChanged += (s, e) => 
+                	{ 
+	                    if (attributeOfMethod.PropertyNames.Contains(methodOfObject.Name)) 
+                    	{ 
+	                        var methodToTrigger = this.GetType().GetMethod(methodOfObject.Name, Type.EmptyTypes); 
+                        	methodToTrigger.Invoke(this, null); 
+                    	} 
+                	}; 
+            	} 
+        	}
+        }
         
         
         protected string ExtractPropertyName<T>(Expression<Func<T>> propertyExpression)

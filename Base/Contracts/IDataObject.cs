@@ -20,6 +20,7 @@ namespace MashedVVM.Base.Contracts
 	{
 		IEnumerable<string> ObjectStatusIgnoringProperties { get; set; }
         DataObjectStatus ObjectStatus  { get; set; }
+        string Errorlist { get; }
 		bool IsValid();
 		void Validate();
 	}

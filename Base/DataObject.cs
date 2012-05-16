@@ -13,6 +13,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Text;
+
 using MashedVVM.Base.Contracts;
 using MashedVVM.Base.Enum;
 
@@ -68,7 +70,30 @@ namespace MashedVVM.Base
         }
 
 		
-		public bool IsValid()
+        public string Errorlist
+		{ 
+    		get  
+    		{ 
+        		PropertyInfo[] properties = GetType().GetProperties(); 
+		        StringBuilder errorList = new StringBuilder(""); 
+        		foreach (PropertyInfo pi in properties) 
+		        { 
+            		var error = this[pi.Name]; 
+            		if (!String.IsNullOrEmpty(error)) 
+            		{ 
+                		if (!String.IsNullOrEmpty(errorList.ToString()))  
+                		{ 
+                    		errorList.Append("\n"); 
+                		} 
+                		errorList.Append(error); 
+            		} 
+        		} 
+        		return errorList.ToString(); 
+    		} 
+		} 
+		
+        
+        public bool IsValid()
         {
             PropertyInfo[] properties = GetType().GetProperties();
             foreach (PropertyInfo pi in properties)
