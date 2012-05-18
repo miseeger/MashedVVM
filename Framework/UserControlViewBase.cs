@@ -8,31 +8,27 @@
  * This code is provided as is and should be used at your own risk. It comes *
  * without a warrenty of any kind.                                           *
  * ************************************************************************* */
-using System;
+ 
+using System.Windows.Controls;
+using MashedVVM.Base.Contracts;
 
-namespace MashedVVM.Base.Attributes
+namespace MashedVVM.Framework
 {
 
-	[AttributeUsage(System.AttributeTargets.Method, Inherited = false, AllowMultiple = false)]
-	public sealed class TriggerPropertyAttribute : System.Attribute
+	public abstract class UserControlViewBase: UserControl, IView
 	{
 
-	public string[] PropertyNames { get; private set; }
-		public int Order { get; private set; }
-
-
-		public TriggerPropertyAttribute(params string[] propertyNames) 
-			: this(0, propertyNames) 
+		public virtual IViewModel ViewModel
 		{
-		}
-
-
-		public TriggerPropertyAttribute(int order, params string[] propertyNames) 
-		{
-			this.PropertyNames = propertyNames; 
-			this.Order = order; 
+			get
+			{
+				return (IViewModel)DataContext;
+			}
+			set
+			{
+				DataContext = value;
+			}
 		}
 
 	}
-
 }

@@ -5,16 +5,16 @@
  * By  : Michael Seeger (www.codedriven.net)                                 *
  * Date: 15.05.2012                                                          *
  *                                                                           *
- * This code is licensed under the Creative Commons Attribution 3.0 License  *
- * (http://creativecommons.org/licenses/by/3.0/de/).                         *
+ * This code is provided as is and should be used at your own risk. It comes *
+ * without a warrenty of any kind.                                           *
  * ************************************************************************* */
 
 namespace MashedVVM.Base.Enum
 {
 	
-    public enum DataObjectStatus
-    {
-        Original, Modified, Added, Deleted
-    }
-    
+	public enum DataObjectStatus
+	{
+		Original, Modified, Added, Deleted
+	}
+
 }

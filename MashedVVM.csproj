@@ -61,8 +61,10 @@
     <Compile Include="Base\Enum\DataObjectStatus.cs" />
     <Compile Include="Base\NotifyableObject.cs" />
     <Compile Include="Framework\EntityViewModelBase.cs" />
+    <Compile Include="Framework\UserControlViewBase.cs" />
     <Compile Include="Framework\ViewBase.cs" />
     <Compile Include="Framework\ViewModelBase.cs" />
+    <Compile Include="Framework\WindowViewBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
