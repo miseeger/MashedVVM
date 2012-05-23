@@ -3,39 +3,40 @@
  *                                                                           *
  * Created with SharpDevelop (http://www.icsharpcode.net/OpenSource/SD/)     *
  * By  : Michael Seeger (www.codedriven.net)                                 *
- * Date: 15.05.2012                                                          *
  *                                                                           *
- * This code is provided as is and should be used at your own risk. It comes *
- * without a warrenty of any kind.                                           *
+ * Put together from Norbert Eders (http://devtyr.norberteder.com) Messenger *
+ * Implementation. The code was a little bit optimized and the implemented   *
+ * Interface was stripped off. Made it a 'MessageBroker'.                    *
  * ************************************************************************* */
 
 using System;
 using System.Collections.Generic; 
+using System.Diagnostics.CodeAnalysis;
 using System.Linq; 
 using System.Threading; 
  
-namespace MashedVVM
+namespace MashedVVM.Framework
 {
 
-	public class Messenger
+	public class MessageBroker
 	{
 
-		private static Messenger _messengerInstance;
+		private static MessageBroker _messageBrokerInstance;
 		private static readonly object SyncLock = new object();
 		private readonly Dictionary<Type, List<ActionIdentifier>> _actionRefs = new Dictionary<Type, List<ActionIdentifier>>();
 		private readonly List<ActionIdentifier> _untypedActionRefs = new List<ActionIdentifier>();
 
 
-		private Messenger() { }
+		private MessageBroker() { }
 
 
-		public static Messenger Instance
+		public static MessageBroker Instance
 		{
 			get
 			{
 				lock (SyncLock)
 				{
-					return _messengerInstance ?? (_messengerInstance = new Messenger());
+					return _messageBrokerInstance ?? (_messageBrokerInstance = new MessageBroker());
 				}
 			}
 		}
@@ -306,3 +307,4 @@ namespace MashedVVM
 	}
 
 }
+
