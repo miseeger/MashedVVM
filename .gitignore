@@ -1,3 +1,29 @@
-# Build Folders (you can keep bin if you'd like, to store dlls and pdbs)
-obj
-bin
+# VS files
+*.obj
+*.exe
+*.pdb
+*.user
+*.aps
+*.pch
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.ilk
+*.log
+[Bb]in
+[Dd]ebug*/
+*.lib
+*.sbr
+obj/
+[Rr]elease*/
+_ReSharper*/
+[Tt]est[Rr]esult*
+
+#Windows Thumbnails
+Thumbs.db

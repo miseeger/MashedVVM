@@ -41,6 +41,7 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
@@ -60,6 +61,7 @@
     <Compile Include="Base\DataObject.cs" />
     <Compile Include="Base\Enum\DataObjectStatus.cs" />
     <Compile Include="Base\NotifyableObject.cs" />
+    <Compile Include="Base\Converters\DataObjectStatusToImageConverter.cs" />
     <Compile Include="Framework\EntityViewModelBase.cs" />
     <Compile Include="Framework\MessageBroker.cs" />
     <Compile Include="Framework\RelayCommand.cs" />
@@ -67,6 +69,7 @@
     <Compile Include="Framework\ViewModelBase.cs" />
     <Compile Include="Framework\WindowViewBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\MashedVVMResources.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Base" />
@@ -75,6 +78,17 @@
     <Folder Include="Base\Attributes" />
     <Folder Include="Framework" />
     <Folder Include="Documentation" />
+    <Folder Include="Base\Converters" />
+    <Folder Include="Resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\added.png" />
+    <None Include="Resources\deleted.png" />
+    <None Include="Resources\modified.png" />
+    <None Include="Resources\original.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\MashedVVMResources.resx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
 </Project>
