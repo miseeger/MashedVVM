@@ -4,7 +4,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # SharpDevelop 4.2.0.8783
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MashedVVM", "MashedVVM.csproj", "{EDE7F6B3-0476-49C5-892C-CD2071A264D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MashedVVM.Test", "..\MashedVVM.Test\MashedVVM.Test.csproj", "{9D5A451B-79C3-48D7-9029-3E74CDCE79D9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MashedVVM.Test", "Test\MashedVVM.Test.csproj", "{9D5A451B-79C3-48D7-9029-3E74CDCE79D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
