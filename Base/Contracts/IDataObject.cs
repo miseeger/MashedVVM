@@ -16,13 +16,10 @@ using MashedVVM.Base.Enum;
 namespace MashedVVM.Base.Contracts
 {
 
-	public interface IDataObject : IEditableObject, IDataErrorInfo
+	public interface IDataObject
 	{
-		IEnumerable<string> ObjectStatusIgnoringProperties { get; set; }
-		DataObjectStatus ObjectStatus  { get; set; }
-		string Errorlist { get; }
-		bool IsValid();
-		void Validate();
+		IEnumerable<string> ObjectStatusIgnoringProperties { get; set;}
+		DataObjectStatus ObjectStatus { get; set; }
 	}
 
 }

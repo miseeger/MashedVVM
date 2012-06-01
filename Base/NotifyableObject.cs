@@ -22,9 +22,10 @@ using MashedVVM.Base.Attributes;
 
 namespace MashedVVM.Base
 {
+
 	public class NotifyableObject : INotifyPropertyChanged
 	{
-		
+
 		public event PropertyChangedEventHandler PropertyChanged;
 
 
@@ -50,7 +51,7 @@ namespace MashedVVM.Base
 
 					this.PropertyChanged += (s, e) =>
 						{
-							if (attributeOfMethod.PropertyNames.Contains(methodOfObject.Name))
+							if (attributeOfMethod.PropertyNames.Contains(e.PropertyName))
 						{
 						var methodToTrigger = this.GetType().GetMethod(methodOfObject.Name, Type.EmptyTypes);
 						methodToTrigger.Invoke(this, null);
@@ -101,15 +102,6 @@ namespace MashedVVM.Base
 			if (handler != null)
 			{
 				handler(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-
-
-		protected void RaisePropertyChanged(params string[] propertyNames)
-		{
-			foreach (var name in propertyNames)
-			{
-				RaisePropertyChanged(name);
 			}
 		}
 
