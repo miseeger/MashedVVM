@@ -27,28 +27,23 @@ namespace MashedVVM.Base
 	public class DataObject: NotifyableObject, IDataObject
 	{
 
-		public IEnumerable<string> ObjectStatusIgnoringProperties { get; set;}
+		private IEnumerable<string> ObjectStatusIgnoringProperties;
 
 
 		protected DataObject()
-			: this(DataObjectStatus.Original)
-		{
-		}
-
-
-		protected DataObject(DataObjectStatus objectStatus)
 		{
 			ObjectStatusIgnoringProperties = new List<string>() { "IsBusy", "IsDirty", "HasErrors", "IsValid" };
-			ObjectStatus = objectStatus;
+
 			PropertyChanged += (o, e) =>
 			{
 				if (ObjectStatus == DataObjectStatus.Original
-					&& (!e.PropertyName.Equals(ExtractPropertyName(() => ObjectStatus))
-						|| ObjectStatusIgnoringProperties.Contains(e.PropertyName)))
+					&& !(e.PropertyName.Equals(ExtractPropertyName(() => ObjectStatus))
+				         || ObjectStatusIgnoringProperties.Contains(e.PropertyName)))
 				{
 					ObjectStatus = DataObjectStatus.Modified;
 				}
 			};
+
 		}
 
 

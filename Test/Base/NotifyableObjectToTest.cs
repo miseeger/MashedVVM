@@ -8,7 +8,7 @@
  * see http://www.opensource.org/licenses/MS-PL.                             *
  *                                                                           *
  * ************************************************************************* */
- 
+
 using System;
 using MashedVVM.Base;
 using MashedVVM.Base.Attributes;

@@ -18,7 +18,6 @@ namespace MashedVVM.Base.Contracts
 
 	public interface IDataObject
 	{
-		IEnumerable<string> ObjectStatusIgnoringProperties { get; set;}
 		DataObjectStatus ObjectStatus { get; set; }
 	}
 
