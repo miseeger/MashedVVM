@@ -31,7 +31,7 @@ namespace MashedVVM.Test
 				(testObject.ObjectStatus == DataObjectStatus.Added)
 				&& (testObject.FirstName == "John")
 				&& (testObject.LastName == "")
-				&& (testObject.ErrorsChangedProperty == "LastName")
+				&& (testObject.LastErrorsChangedProperty == "LastName")
 			);
 		}
 
@@ -45,9 +45,39 @@ namespace MashedVVM.Test
 			
 			Assert.IsTrue(
 				(testObject.ObjectStatus == DataObjectStatus.Added)
-				&& (testObject.ErrorsChangedProperty == "LastName")
+				&& (testObject.LastErrorsChangedProperty == "LastName")
 				&& testObject.HasErrors
 			);
+		}
+
+
+		[Test]
+		public void HasErrors2Test()
+		{
+			var testObject = new ValidatableDataObjectToTest{ObjectStatus = DataObjectStatus.Added};
+			testObject.LastName = "Doe";
+			testObject.FirstName = "AAA";
+			
+			Assert.IsTrue(
+				(testObject.ObjectStatus == DataObjectStatus.Added)
+				&& (testObject.LastErrorsChangedProperty == "FirstName")
+				&& (testObject.HasErrors)
+			);
+		}
+
+
+		[Test]
+		public void ErrorListTest()
+		{
+			var testObject = new ValidatableDataObjectToTest{ObjectStatus = DataObjectStatus.Added};
+			testObject.LastName = "";
+			testObject.FirstName = "AAA";
+			var ErrorList = testObject.Errorlist;
+			var ErrorList2 = testObject.ErrorStringlist;
+			
+			Assert.IsTrue(ErrorList == string.Format("{0}\n{1}\n{2}", 
+				"AAA not allowed as firstname.", "This is not a valid firstname.", 
+				"Lastname must be given."));
 		}
 
 

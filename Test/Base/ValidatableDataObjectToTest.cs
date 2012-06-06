@@ -19,12 +19,12 @@ namespace MashedVVM.Test.Base
 	public class ValidatableDataObjectToTest : ValidatableDataObject
 	{
 
-		public string ErrorsChangedProperty { get; private set; }
+		public string LastErrorsChangedProperty { get; private set; }
 
 
 		public ValidatableDataObjectToTest()
 		{
-			ErrorsChanged += (s, e) => { ErrorsChangedProperty = e.PropertyName; };
+			ErrorsChanged += (s, e) => { LastErrorsChangedProperty = e.PropertyName; };
 		}
 
 
@@ -37,7 +37,11 @@ namespace MashedVVM.Test.Base
 				if(_firstName != value)
 				{
 					if (value == "AAA")
+					{
+						
 						AddError(() => FirstName, "AAA not allowed as firstname.");
+						AddError(() => FirstName, "This is not a valid firstname.");
+					}
 					else
 						RemoveError(() => FirstName);
 					
