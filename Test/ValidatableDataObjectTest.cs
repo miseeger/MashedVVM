@@ -10,6 +10,7 @@
  * ************************************************************************* */
 
 using System;
+using System.Collections.Generic;
 using MashedVVM.Base.Enum;
 using MashedVVM.Test.Base;
 using NUnit.Framework;
@@ -37,7 +38,7 @@ namespace MashedVVM.Test
 
 
 		[Test]
-		public void HasErrorsTest()
+		public void HasErrorsLastNameTest()
 		{
 			var testObject = new ValidatableDataObjectToTest{ObjectStatus = DataObjectStatus.Added};
 			testObject.FirstName = "John";
@@ -52,7 +53,7 @@ namespace MashedVVM.Test
 
 
 		[Test]
-		public void HasErrors2Test()
+		public void HasErrorsFirstNameTest()
 		{
 			var testObject = new ValidatableDataObjectToTest{ObjectStatus = DataObjectStatus.Added};
 			testObject.LastName = "Doe";
@@ -78,6 +79,27 @@ namespace MashedVVM.Test
 			Assert.IsTrue(ErrorList == string.Format("{0}\n{1}\n{2}", 
 				"AAA not allowed as firstname.", "This is not a valid firstname.", 
 				"Lastname must be given."));
+		}
+
+
+		[Test]
+		public void ErrorStringlistTest()
+		{
+			var expectedErrorList = new System.Collections.Generic.List<string>()
+				{
+					string.Format("{0}\n{1}", "AAA not allowed as firstname.", "This is not a valid firstname."),
+					"Lastname must be given."
+				};
+
+			var testObject = new ValidatableDataObjectToTest{ObjectStatus = DataObjectStatus.Added};
+			testObject.LastName = "";
+			testObject.FirstName = "AAA";
+			var testErrorList = testObject.ErrorStringlist;
+
+			Assert.IsTrue(
+				(expectedErrorList[0] == testErrorList[0])
+				&& (expectedErrorList[1] == testErrorList[1])
+			);
 		}
 
 
