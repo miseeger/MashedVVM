@@ -13,7 +13,7 @@ using System;
 using MashedVVM.Base;
 using MashedVVM.Base.Attributes;
 
-namespace MashedVVM.Test.Base
+namespace MashedVVM.Test.Base.TestObjects
 {
 
 	public class NotifyableObjectToTest : NotifyableObject

@@ -10,9 +10,9 @@
 using System;
 using NUnit.Framework;
 using System.Collections.Generic;
-using MashedVVM.Test.Base;
+using MashedVVM.Test.Base.TestObjects;
 
-namespace MashedVVM.Test
+namespace MashedVVM.Test.Base
 {
 
 	[TestFixture]
