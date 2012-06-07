@@ -10,7 +10,7 @@
  * ************************************************************************* */
 
 using System;
-using System.Collections.Generic;
+using System.Linq;
 using MashedVVM.Base.Enum;
 using MashedVVM.Test.Base;
 using NUnit.Framework;
@@ -20,6 +20,10 @@ namespace MashedVVM.Test
 	[TestFixture]
 	public class ValidatableDataObjectTest
 	{
+
+		private const string ExpectedFirstNameErrors = "AAA not allowed as firstname.\nThis is not a valid firstname.";
+		private const string ExpectedLastNameErrors = "Lastname must be given.";
+
 
 		[Test]
 		public void NotifyErrorsChangedTest()
@@ -68,6 +72,21 @@ namespace MashedVVM.Test
 
 
 		[Test]
+		public void SetRemoveLastNameErrorTest()
+		{
+			var testObject = new ValidatableDataObjectToTest{ObjectStatus = DataObjectStatus.Added};
+			testObject.FirstName = "AAA";
+			testObject.LastName = "Doe";
+			testObject.FirstName = "John";
+			
+			Assert.IsTrue(
+				(testObject.ObjectStatus == DataObjectStatus.Added)
+				&& (testObject.IsValid)
+			);
+		}
+
+
+		[Test]
 		public void ErrorListTest()
 		{
 			var testObject = new ValidatableDataObjectToTest{ObjectStatus = DataObjectStatus.Added};
@@ -76,9 +95,8 @@ namespace MashedVVM.Test
 			var ErrorList = testObject.Errorlist;
 			var ErrorList2 = testObject.ErrorStringlist;
 			
-			Assert.IsTrue(ErrorList == string.Format("{0}\n{1}\n{2}", 
-				"AAA not allowed as firstname.", "This is not a valid firstname.", 
-				"Lastname must be given."));
+			Assert.IsTrue(ErrorList == string.Format("{0}\n{1}", 
+				ExpectedFirstNameErrors, ExpectedLastNameErrors));
 		}
 
 
@@ -87,8 +105,8 @@ namespace MashedVVM.Test
 		{
 			var expectedErrorList = new System.Collections.Generic.List<string>()
 				{
-					string.Format("{0}\n{1}", "AAA not allowed as firstname.", "This is not a valid firstname."),
-					"Lastname must be given."
+					ExpectedFirstNameErrors,
+					ExpectedLastNameErrors
 				};
 
 			var testObject = new ValidatableDataObjectToTest{ObjectStatus = DataObjectStatus.Added};
@@ -99,6 +117,21 @@ namespace MashedVVM.Test
 			Assert.IsTrue(
 				(expectedErrorList[0] == testErrorList[0])
 				&& (expectedErrorList[1] == testErrorList[1])
+			);
+		}
+
+
+		[Test]
+		public void GetErrorsGenericTest()
+		{
+			var testObject = new ValidatableDataObjectToTest{ObjectStatus = DataObjectStatus.Added};
+			testObject.FirstName = "John";
+			testObject.LastName = "";
+			var errors = testObject.GetErrors(() => testObject.LastName).Cast<string>().ToList();
+			
+			Assert.IsTrue(
+				(errors[0] == ExpectedLastNameErrors)
+				&& (testObject.HasErrors)
 			);
 		}
 
@@ -115,6 +148,41 @@ namespace MashedVVM.Test
 				&& testObject.IsValid
 			);
 		}
+
+
+		[Test]
+		public void GenericNotificationTest()
+		{
+			var testObject = new ValidatableDataObjectToTest{ObjectStatus = DataObjectStatus.Added};
+			testObject.NotifyErrorsChanged(() => testObject.LastName);
+			Assert.IsTrue((testObject.LastErrorsChangedProperty == "LastName")
+							&& (testObject.ObjectStatus == DataObjectStatus.Added));
+		}
+		
+
+		// ----- Tests for the IDataErrorInfo implementation
+
+		[Test]
+		public void ErrorTest()
+		{
+			var testObject = new ValidatableDataObjectToTest{ObjectStatus = DataObjectStatus.Added};
+			Assert.IsTrue(testObject.Error == string.Empty);
+		}
+
+
+		[Test]
+		public void StringIndexerTest()
+		{
+			var testObject = new ValidatableDataObjectToTest{ObjectStatus = DataObjectStatus.Added};
+			testObject.LastName = "";
+			testObject.FirstName = "AAA";
+
+			Assert.IsTrue(
+				(testObject["FirstName"] == ExpectedFirstNameErrors)
+				&& (testObject["LastName"] == ExpectedLastNameErrors)
+			);
+		}
+
 
 	}
 

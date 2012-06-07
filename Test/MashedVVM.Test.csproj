@@ -46,6 +46,10 @@
     <Compile Include="Base\DataObjectToTest.cs" />
     <Compile Include="Base\EditableDataObjectToTest.cs" />
     <Compile Include="Base\NotifyableObjectToTest.cs" />
+    <Compile Include="Base\TestObjects\DataObjectToTest.cs" />
+    <Compile Include="Base\TestObjects\EditableDataObjectToTest.cs" />
+    <Compile Include="Base\TestObjects\NotifyableObjectToTest.cs" />
+    <Compile Include="Base\TestObjects\ValidatableDataObjectToTest.cs" />
     <Compile Include="Base\ValidatableDataObjectToTest.cs" />
     <Compile Include="DataObjectTest.cs" />
     <Compile Include="EditableDataObjectTest.cs" />
@@ -58,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Base" />
+    <Folder Include="Base\TestObjects" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MashedVVM.csproj">
