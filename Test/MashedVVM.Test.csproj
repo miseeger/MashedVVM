@@ -33,16 +33,21 @@
     <Reference Include="nunit.framework">
       <HintPath>..\MashedVVM\packages\NUnit.2.6.0.12054\lib\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\DataObjectStatusToImageConverterTest.cs" />
     <Compile Include="Base\DataObjectTest.cs" />
     <Compile Include="Base\EditableDataObjectTest.cs" />
     <Compile Include="Base\NotifyableObjectTest.cs" />
