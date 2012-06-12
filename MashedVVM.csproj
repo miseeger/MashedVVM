@@ -68,6 +68,13 @@
     <Compile Include="Base\NotifyableObject.cs" />
     <Compile Include="Base\Converters\DataObjectStatusToImageConverter.cs" />
     <Compile Include="Base\Events\DataErrorsChangedEventArgs.cs" />
+    <Compile Include="Framework\Behavior\BehaviorBinding.cs" />
+    <Compile Include="Framework\Behavior\CommandBehavior.cs" />
+    <Compile Include="Framework\Behavior\CommandBehaviorBinding.cs" />
+    <Compile Include="Framework\Behavior\CommandBehaviorCollection.cs" />
+    <Compile Include="Framework\Behavior\EventHandlerGenerator.cs" />
+    <Compile Include="Framework\Behavior\ExecutionStrategy.cs" />
+    <Compile Include="Framework\Behavior\SimpleCommand.cs" />
     <Compile Include="Framework\MessageBroker.cs" />
     <Compile Include="Framework\RelayCommand.cs" />
     <Compile Include="Framework\ViewModel\EntityViewModelBase.cs" />
@@ -87,6 +94,7 @@
     <Folder Include="Documentation" />
     <Folder Include="Base\Converters" />
     <Folder Include="Base\Events" />
+    <Folder Include="Framework\Behavior" />
     <Folder Include="Framework\View" />
     <Folder Include="Framework\ViewModel" />
     <Folder Include="Resources" />

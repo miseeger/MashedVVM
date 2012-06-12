@@ -56,6 +56,7 @@
     <Compile Include="Base\TestObjects\NotifyableObjectToTest.cs" />
     <Compile Include="Base\TestObjects\ValidatableDataObjectToTest.cs" />
     <Compile Include="Base\ValidatableDataObjectTest.cs" />
+    <Compile Include="Framework\RelayCommandTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -64,6 +65,8 @@
   <ItemGroup>
     <Folder Include="Base" />
     <Folder Include="Base\TestObjects" />
+    <Folder Include="Framework" />
+    <Folder Include="Framework\TestObjects" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MashedVVM.csproj">
