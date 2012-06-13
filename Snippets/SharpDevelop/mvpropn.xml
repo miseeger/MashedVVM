@@ -1,0 +1,18 @@
+﻿<CodeSnippet>
+	<Name>mvpropn</Name>
+	<Text>private ${type=object} _${toFieldName(name)};
+public ${type} ${name=Property}
+{
+	get { return _${toFieldName(name)}; }
+	set
+	{ 
+		if(_${toFieldName(name)} != value)
+		{
+			_${toFieldName(name)} = value;
+			RaisePropertyChanged("${name}");
+		}
+	}	
+}</Text>
+	<Description>Property with Notification (RaisePropertChanged with magic String)</Description>
+	<Keyword>event</Keyword>
+</CodeSnippet>

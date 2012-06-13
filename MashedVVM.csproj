@@ -97,13 +97,21 @@
     <Folder Include="Framework\Behavior" />
     <Folder Include="Framework\View" />
     <Folder Include="Framework\ViewModel" />
+    <Folder Include="Snippets" />
     <Folder Include="Resources" />
+    <Folder Include="Snippets\SharpDevelop" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\added.png" />
     <None Include="Resources\deleted.png" />
     <None Include="Resources\modified.png" />
     <None Include="Resources\original.png" />
+    <None Include="Snippets\SharpDevelop\mvpropn.xml" />
+    <None Include="Snippets\SharpDevelop\mvpropnl.xml" />
+    <None Include="Snippets\SharpDevelop\mvrcmd.xml" />
+    <None Include="Snippets\SharpDevelop\mvrcmdce.xml" />
+    <None Include="Snippets\SharpDevelop\mvrcmdcep.xml" />
+    <None Include="Snippets\SharpDevelop\nutest.xml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\MashedVVMResources.resx" />

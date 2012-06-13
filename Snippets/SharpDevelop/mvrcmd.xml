@@ -1,0 +1,15 @@
+﻿<CodeSnippet>
+	<Name>mvrcmd</Name>
+	<Text>private RelayCommand _${toFieldName(name)}Command;
+public ICommand ${name=Action}Command
+{
+	get { return _${toFieldName(name)}Command ?? (_${toFieldName(name)}Command = new RelayCommand(${name}Selected)); }
+}
+
+private void ${name}()
+{
+	${Caret}
+}</Text>
+	<Description>RelayCommand (without CanExecute)</Description>
+	<Keyword>event</Keyword>
+</CodeSnippet>

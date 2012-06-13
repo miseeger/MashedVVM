@@ -1,0 +1,20 @@
+﻿<CodeSnippet>
+	<Name>mvrcmdce</Name>
+	<Text>private RelayCommand _${toFieldName(name)}Command;
+public ICommand ${name=Action}Command
+{
+	get { return _${toFieldName(name)}Command ?? (_${toFieldName(name)}Command = new RelayCommand(${name}, CanExecute${name})); }
+}
+
+private void ${name}()
+{
+	${Caret}
+}
+
+private bool CanExecute${name}()
+{
+	return ((${condition}));
+}</Text>
+	<Description>RelayCommand with CanExecute</Description>
+	<Keyword>event</Keyword>
+</CodeSnippet>

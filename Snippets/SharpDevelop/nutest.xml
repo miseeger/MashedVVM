@@ -1,0 +1,10 @@
+﻿<CodeSnippet>
+	<Name>nutest</Name>
+	<Text>[Test]
+public void ${TestName}Test()
+{
+	${Caret}Assert.IsTrue(false);
+}</Text>
+	<Description>NUnit-Test</Description>
+	<Keyword>event</Keyword>
+</CodeSnippet>
