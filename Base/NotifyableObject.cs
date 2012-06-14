@@ -4,8 +4,8 @@
  * Created with SharpDevelop (http://www.icsharpcode.net/OpenSource/SD/)     *
  * By  : Michael Seeger (www.codedriven.net)                                 *
  *                                                                           *
- * The TriggerProperty functionality was taken from Robert MacLean's         *
- * AtomicMVVM framework (https://bitbucket.org/rmaclean/atomicmvvm).         *
+ * The Idea of the TriggerProperty and ReevaluateProperty functionality was  *
+ * taken from Robert MacLean's AtomicMVVM framework (http://bit.ly/K5yJ4L).  *
  *                                                                           *
  * This code is distributed under the MS Public License. For more details    *
  * see http://www.opensource.org/licenses/MS-PL.                             *
@@ -17,6 +17,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+using System.Windows.Input;
 
 using MashedVVM.Base.Attributes;
 
@@ -30,8 +31,8 @@ namespace MashedVVM.Base
 
 
 		public NotifyableObject()
-		{ 
-			// Register Property-Triggers:
+		{
+
 			var methods = GetType()
 				.GetMethods()
 				.Where(m => !m.IsSpecialName
@@ -39,6 +40,13 @@ namespace MashedVVM.Base
 						&& m.ReturnType == typeof (void))
 				.ToList();
 
+			var commands = GetType()
+				.GetFields(BindingFlags.NonPublic | BindingFlags.Instance)
+				.Where(c => !c.IsSpecialName
+						&& typeof(ICommand).IsAssignableFrom(c.FieldType))
+				.ToList();
+
+			// Register Property-Triggers:
 			foreach (var method in methods)
 			{
 				var attributes = (method.GetCustomAttributes(typeof(TriggerPropertyAttribute), false) as TriggerPropertyAttribute[])
@@ -52,13 +60,40 @@ namespace MashedVVM.Base
 					this.PropertyChanged += (s, e) =>
 						{
 							if (attributeOfMethod.PropertyNames.Contains(e.PropertyName))
-						{
-						var methodToTrigger = this.GetType().GetMethod(methodOfObject.Name, Type.EmptyTypes);
-						methodToTrigger.Invoke(this, null);
-						}
+							{
+								var methodToTrigger = this.GetType().GetMethod(methodOfObject.Name, Type.EmptyTypes);
+								methodToTrigger.Invoke(this, null);
+							}
 					};
 				}
 			}
+
+			// Register Reevaluations:
+			foreach (var command in commands) 
+			{
+				var attributes = (command.GetCustomAttributes(typeof(ReevaluatePropertyAttribute), false) as ReevaluatePropertyAttribute[])
+					.OrderBy(ca => ca.Order);
+				
+				foreach (var attribute in attributes) 
+				{
+					ReevaluatePropertyAttribute attributeOfField = attribute;
+					FieldInfo commandOfObject = command;
+
+					this.PropertyChanged += (s, e) =>
+					{
+						if (attributeOfField.PropertyNames.Contains(e.PropertyName)) 
+						{
+							var raiseCeChangedMethod = this.GetType().GetMethod("RaiseCanExecuteChanged", Type.EmptyTypes);
+							if (raiseCeChangedMethod != null)
+							{
+								raiseCeChangedMethod.Invoke(this, null);
+							}
+						}
+					};
+
+				}
+			}
+
 		}
 
 

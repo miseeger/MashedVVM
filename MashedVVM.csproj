@@ -54,6 +54,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\Attributes\ReevaluatePropertyAttribute.cs" />
     <Compile Include="Base\Attributes\TriggerPropertyAttribute.cs" />
     <Compile Include="Base\Contracts\IDataObject.cs" />
     <Compile Include="Base\Contracts\IEditableDataObject.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="Base\DataObject.cs" />
     <Compile Include="Base\EditableDataObject.cs" />
     <Compile Include="Base\Enum\DataObjectStatus.cs" />
+    <Compile Include="Base\Temp.cs" />
     <Compile Include="Base\ValidatableDataObject.cs" />
     <Compile Include="Base\NotifyableObject.cs" />
     <Compile Include="Base\Converters\DataObjectStatusToImageConverter.cs" />

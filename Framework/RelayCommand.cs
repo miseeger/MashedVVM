@@ -5,7 +5,7 @@
  * By  : Michael Seeger (www.codedriven.net)                                 *
  * Date: 15.05.2012                                                          *
  *                                                                           *
- * Taken from the SharpDevelop project (see link above)                      *
+ * Taken from the SharpDevelop project (see link above) and extended.        *
  *                                                                           *
  * Licensed under the MS-PL (http://www.opensource.org/licenses/MS-PL)       *
  * ************************************************************************* */
@@ -17,7 +17,7 @@ using System.Windows.Input;
 namespace MashedVVM.Framework
 {
 
-	public class RelayCommand<T> : System.Windows.Input.ICommand
+	public class RelayCommand<T> : ICommand
 	{
 
 		readonly Predicate<T> _canExecute;
@@ -67,11 +67,17 @@ namespace MashedVVM.Framework
 			_execute((T)parameter);
 		}
 
+
+		public void RaiseCanExecuteChanged()
+		{
+			CommandManager.InvalidateRequerySuggested();
+		}
+
 	}
 
 
 
-	public class RelayCommand : System.Windows.Input.ICommand
+	public class RelayCommand : ICommand
 	{
 
 		readonly Func<Boolean> _canExecute;
@@ -120,6 +126,13 @@ namespace MashedVVM.Framework
 		{
 			_execute();
 		}
+
+
+		public void RaiseCanExecuteChanged()
+		{
+			CommandManager.InvalidateRequerySuggested();
+		}
+
 	}
 
 }

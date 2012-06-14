@@ -11,29 +11,30 @@
  * see http://www.opensource.org/licenses/MS-PL.                             *
  *                                                                           *
  * ************************************************************************* */
+
 using System;
 
 namespace MashedVVM.Base.Attributes
 {
 
-	[AttributeUsage(System.AttributeTargets.Method, Inherited = false, AllowMultiple = false)]
-	public sealed class TriggerPropertyAttribute : System.Attribute
+	[AttributeUsage(System.AttributeTargets.Field, Inherited = false, AllowMultiple = false)]
+	public sealed class ReevaluatePropertyAttribute : System.Attribute
 	{
 
 		public string[] PropertyNames { get; private set; }
 		public int Order { get; private set; }
 
 
-		public TriggerPropertyAttribute(params string[] propertyNames) 
-			: this(0, propertyNames) 
+		public ReevaluatePropertyAttribute(params string[] propertyNames)
+			: this(0, propertyNames)
 		{
 		}
 
 
-		public TriggerPropertyAttribute(int order, params string[] propertyNames) 
+		public ReevaluatePropertyAttribute(int order, params string[] propertyNames)
 		{
-			this.PropertyNames = propertyNames; 
-			this.Order = order; 
+			this.PropertyNames = propertyNames;
+			this.Order = order;
 		}
 
 	}

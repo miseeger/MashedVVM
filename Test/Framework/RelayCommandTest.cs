@@ -12,7 +12,7 @@
 using System;
 using System.Linq;
 using MashedVVM.Base.Enum;
-using MashedVVM.Test.Base.TestObjects;
+using MashedVVM.Test.Framework.TestObjects;
 using NUnit.Framework;
 
 namespace MashedVVM.Test.Framework
@@ -25,6 +25,7 @@ namespace MashedVVM.Test.Framework
 		[Test]
 		public void TestNameTest()
 		{
+			var testObject = new RelayCommandsToTest();
 			Assert.IsTrue(true);
 		}
 
