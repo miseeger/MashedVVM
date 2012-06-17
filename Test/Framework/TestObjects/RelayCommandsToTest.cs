@@ -25,15 +25,30 @@ namespace MashedVVM.Test.Framework.TestObjects
 
 		public bool SimpleRcmdCeExecuted { get; set; }
 		public bool SimpleRcmdCeCanExecuteExecuted { get; set; }
+		public bool SimpleRcmdCeCanExecuteChangedExecuted {get; set; }
 		
 		public bool RcmdWithParamExecuted { get; set; }
 		public string RcmdWithParamParamValue { get; set; }
 
 		public bool RcmdWithParamCeExecuted { get; set; }
-		public bool RcmdWithParamCeCanExecuteExecuted { get; set; }
 		public string RcmdWithParamCeParamValue { get; set; }
 		
 		public bool CanExecute { get; set; }
+
+
+		private string _lastname;
+		public string Lastname
+		{
+			get { return _lastname; }
+			set
+			{ 
+				if(_lastname != value)
+				{
+					_lastname = value;
+					RaisePropertyChanged(() => Lastname);
+				}
+			}	
+		}
 
 
 		private RelayCommand _simpleRcmdCommand;
@@ -49,25 +64,35 @@ namespace MashedVVM.Test.Framework.TestObjects
 
 
 		[ReevaluateProperty("Lastname")]
-		private RelayCommand _simpleRmcdCeCommand;
-		public ICommand SimpleRmcdCeCommand
+		private RelayCommand _simpleRcmdCeCommand;
+		public ICommand SimpleRcmdCeCommand
 		{
-			get { return _simpleRmcdCeCommand ?? (_simpleRmcdCeCommand = new RelayCommand(SimpleRmcdCe, CanExecuteSimpleRmcdCe)); }
+			get
+			{
+				if (_simpleRcmdCeCommand == null) 
+				{
+					_simpleRcmdCeCommand = new RelayCommand(SimpleRcmdCe, CanExecuteSimpleRcmdCe);
+					_simpleRcmdCeCommand.CanExecuteChanged += (s, e) => { SimpleRcmdCeCanExecuteChangedExecuted = true; };
+				}
+				return _simpleRcmdCeCommand;
+				
+				// usual way:
+				// return _simpleRcmdCeCommand ?? (_simpleRcmdCeCommand = new RelayCommand(SimpleRcmdCe, CanExecuteSimpleRcmdCe));
+			}
 		}
 
-		private void SimpleRmcdCe()
+		private void SimpleRcmdCe()
 		{
 			SimpleRcmdCeExecuted = true;
 		}
 
-		private bool CanExecuteSimpleRmcdCe()
+		private bool CanExecuteSimpleRcmdCe()
 		{
 			SimpleRcmdCeCanExecuteExecuted = true;
 			return (CanExecute);
 		}
 
 
-		[ReevaluateProperty("Lastname")]
 		private RelayCommand<string> _paramRcmdCommand;
 		public ICommand ParamRcmdCommand
 		{

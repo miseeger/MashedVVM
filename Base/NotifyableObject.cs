@@ -18,8 +18,8 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Windows.Input;
-
 using MashedVVM.Base.Attributes;
+using MashedVVM.Framework;
 
 namespace MashedVVM.Base
 {
@@ -43,7 +43,8 @@ namespace MashedVVM.Base
 			var commands = GetType()
 				.GetFields(BindingFlags.NonPublic | BindingFlags.Instance)
 				.Where(c => !c.IsSpecialName
-						&& typeof(ICommand).IsAssignableFrom(c.FieldType))
+				       && typeof(RelayCommand).IsAssignableFrom(c.FieldType))
+						// && typeof(ICommand).IsAssignableFrom(c.FieldType))
 				.ToList();
 
 			// Register Property-Triggers:
@@ -68,7 +69,7 @@ namespace MashedVVM.Base
 				}
 			}
 
-			// Register Reevaluations:
+			// Register Reevaluations (only non-generic RelayCommand!):
 			foreach (var command in commands) 
 			{
 				var attributes = (command.GetCustomAttributes(typeof(ReevaluatePropertyAttribute), false) as ReevaluatePropertyAttribute[])
@@ -83,10 +84,10 @@ namespace MashedVVM.Base
 					{
 						if (attributeOfField.PropertyNames.Contains(e.PropertyName)) 
 						{
-							var raiseCeChangedMethod = this.GetType().GetMethod("RaiseCanExecuteChanged", Type.EmptyTypes);
+							var raiseCeChangedMethod = commandOfObject.FieldType.GetMethod("RaiseCanExecuteChanged", Type.EmptyTypes);
 							if (raiseCeChangedMethod != null)
 							{
-								raiseCeChangedMethod.Invoke(this, null);
+								raiseCeChangedMethod.Invoke(commandOfObject.GetValue(this), null);
 							}
 						}
 					};

@@ -39,18 +39,25 @@ namespace MashedVVM.Framework
 		}
 
 
+		private EventHandler _canExecuteChanged;
 		public event EventHandler CanExecuteChanged
 		{
 			add
 			{
 				if (_canExecute != null)
+				{
 					CommandManager.RequerySuggested += value;
+					_canExecuteChanged += value;
+				}
 			}
 
 			remove
 			{
 				if (_canExecute != null)
+				{
 					CommandManager.RequerySuggested -= value;
+					_canExecuteChanged -= value;
+				}
 			}
 		}
 
@@ -70,7 +77,10 @@ namespace MashedVVM.Framework
 
 		public void RaiseCanExecuteChanged()
 		{
-			CommandManager.InvalidateRequerySuggested();
+			if (_canExecuteChanged != null)
+			{
+				_canExecuteChanged (this, new EventArgs());
+			}
 		}
 
 	}
@@ -99,18 +109,25 @@ namespace MashedVVM.Framework
 		}
 
 
+		private EventHandler _canExecuteChanged;
 		public event EventHandler CanExecuteChanged
 		{
 			add
 			{
 				if (_canExecute != null)
+				{
 					CommandManager.RequerySuggested += value;
+					_canExecuteChanged += value;
+				}
 			}
 
 			remove
 			{
 				if (_canExecute != null)
+				{
 					CommandManager.RequerySuggested -= value;
+					_canExecuteChanged -= value;
+				}
 			}
 		}
 
@@ -130,7 +147,10 @@ namespace MashedVVM.Framework
 
 		public void RaiseCanExecuteChanged()
 		{
-			CommandManager.InvalidateRequerySuggested();
+			if (_canExecuteChanged != null)
+			{
+				_canExecuteChanged (this, new EventArgs());
+			}
 		}
 
 	}

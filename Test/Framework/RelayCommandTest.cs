@@ -23,10 +23,14 @@ namespace MashedVVM.Test.Framework
 	{
 
 		[Test]
-		public void TestNameTest()
+		public void ReevaluateOnLastnameChangeTest()
 		{
 			var testObject = new RelayCommandsToTest();
-			Assert.IsTrue(true);
+			// at least the relay command must be once referenced to call its 
+			// ctor so that CanExecuteChanged will be subscribed to.
+			var rcmd = testObject.SimpleRcmdCeCommand;
+			testObject.Lastname = "John";
+			Assert.IsTrue(testObject.SimpleRcmdCeCanExecuteChangedExecuted);
 		}
 
 	}
