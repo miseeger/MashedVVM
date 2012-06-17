@@ -1,7 +1,7 @@
 ﻿<CodeSnippet>
 	<Name>mvrcmdcep</Name>
 	<Text>private RelayCommand&lt;${type=object}&gt; _${toFieldName(name)}Command;
-public ICommand ${name=Action}Command
+public RelayCommand&lt;${type}&gt; ${name=Action}Command
 {
 	get { return _${toFieldName(name)}Command ?? (_${toFieldName(name)}Command = new RelayCommand&lt;${type}&gt;(${name}, CanExecute${name})); }
 }

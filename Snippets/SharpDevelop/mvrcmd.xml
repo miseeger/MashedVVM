@@ -1,7 +1,7 @@
 ﻿<CodeSnippet>
 	<Name>mvrcmd</Name>
 	<Text>private RelayCommand _${toFieldName(name)}Command;
-public ICommand ${name=Action}Command
+public RelayCommand ${name=Action}Command
 {
 	get { return _${toFieldName(name)}Command ?? (_${toFieldName(name)}Command = new RelayCommand(${name}Selected)); }
 }

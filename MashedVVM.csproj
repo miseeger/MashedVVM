@@ -117,6 +117,7 @@
     <None Include="Snippets\SharpDevelop\mvrcmd.xml" />
     <None Include="Snippets\SharpDevelop\mvrcmdce.xml" />
     <None Include="Snippets\SharpDevelop\mvrcmdcep.xml" />
+    <None Include="Snippets\SharpDevelop\mvrcmdp.xml" />
     <None Include="Snippets\SharpDevelop\nutest.xml" />
     <None Include="Snippets\SharpDevelop\stdevent.xml" />
   </ItemGroup>

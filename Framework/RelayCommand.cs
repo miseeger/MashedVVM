@@ -132,7 +132,7 @@ namespace MashedVVM.Framework
 		}
 
 
-		[DebuggerStepThrough]
+//		[DebuggerStepThrough]
 		public Boolean CanExecute(Object parameter)
 		{
 			return _canExecute == null ? true : _canExecute();

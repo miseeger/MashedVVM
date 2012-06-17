@@ -26,12 +26,43 @@ namespace MashedVVM.Test.Framework
 		public void ReevaluateOnLastnameChangeTest()
 		{
 			var testObject = new RelayCommandsToTest();
-			// at least the relay command must be once referenced to call its 
-			// ctor so that CanExecuteChanged will be subscribed to.
+			// at least the relay command must be get once in order to call
+			// its ctor so that CanExecuteChanged will be subscribed to.
 			var rcmd = testObject.SimpleRcmdCeCommand;
-			testObject.Lastname = "John";
+			testObject.Lastname = "Doe";
 			Assert.IsTrue(testObject.SimpleRcmdCeCanExecuteChangedExecuted);
 		}
 
+
+		[Test]
+		public void ReevaluateOnFirstnameChangeTest()
+		{
+			var testObject = new RelayCommandsToTest();
+			// at least the relay command must be get once in order to call
+			// its ctor so that CanExecuteChanged will be subscribed to.
+			var rcmd = testObject.SimpleRcmdCeCommand;
+			testObject.Firstname = "John";
+			Assert.IsTrue(testObject.SimpleRcmdCeCanExecuteChangedExecuted);
+		}
+
+
+		[Test]
+		public void RaiseCanExecuteChangedOnRelayCommandTest()
+		{
+			var testObject = new RelayCommandsToTest();
+			testObject.SimpleRcmdCeCommand.RaiseCanExecuteChanged();
+			Assert.IsTrue(testObject.SimpleRcmdCeCanExecuteChangedExecuted);
+		}
+
+
+		[Test]
+		public void SimpleRcmdExecuteTest()
+		{
+			var testObject = new RelayCommandsToTest();
+			testObject.SimpleRcmdCommand.Execute(this);
+			Assert.IsTrue(testObject.SimpleRcmdExecuted);
+		}
+
 	}
+
 }

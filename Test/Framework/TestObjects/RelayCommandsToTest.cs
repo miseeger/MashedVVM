@@ -51,8 +51,23 @@ namespace MashedVVM.Test.Framework.TestObjects
 		}
 
 
+		private string _firstname;
+		public string Firstname
+		{
+			get { return _firstname; }
+			set
+			{ 
+				if(_firstname != value)
+				{
+					_firstname = value;
+					RaisePropertyChanged(() => Firstname);
+				}
+			}	
+		}
+
+
 		private RelayCommand _simpleRcmdCommand;
-		public ICommand SimpleRcmdCommand
+		public RelayCommand SimpleRcmdCommand
 		{
 			get { return _simpleRcmdCommand ?? (_simpleRcmdCommand = new RelayCommand(SimpleRcmd)); }
 		}
@@ -63,9 +78,9 @@ namespace MashedVVM.Test.Framework.TestObjects
 		}
 
 
-		[ReevaluateProperty("Lastname")]
+		[ReevaluateProperty("Lastname","Firstname")]
 		private RelayCommand _simpleRcmdCeCommand;
-		public ICommand SimpleRcmdCeCommand
+		public RelayCommand SimpleRcmdCeCommand
 		{
 			get
 			{
@@ -76,7 +91,7 @@ namespace MashedVVM.Test.Framework.TestObjects
 				}
 				return _simpleRcmdCeCommand;
 				
-				// usual way:
+				// usual way to get the SimpleRcmdCeCommand instance:
 				// return _simpleRcmdCeCommand ?? (_simpleRcmdCeCommand = new RelayCommand(SimpleRcmdCe, CanExecuteSimpleRcmdCe));
 			}
 		}
@@ -94,7 +109,7 @@ namespace MashedVVM.Test.Framework.TestObjects
 
 
 		private RelayCommand<string> _paramRcmdCommand;
-		public ICommand ParamRcmdCommand
+		public RelayCommand<string> ParamRcmdCommand
 		{
 			get { return _paramRcmdCommand ?? (_paramRcmdCommand = new RelayCommand<string>(ParamRcmd)); }
 		}
@@ -108,7 +123,7 @@ namespace MashedVVM.Test.Framework.TestObjects
 
 
 		private RelayCommand<string> _paramRcmdCeCommand;
-		public ICommand ParamRcmdCeCommand
+		public RelayCommand<string> ParamRcmdCeCommand
 		{
 			get { return _paramRcmdCeCommand ?? (_paramRcmdCeCommand = new RelayCommand<string>(ParamRcmdCe, CanExecuteParamRcmdCe)); }
 		}
