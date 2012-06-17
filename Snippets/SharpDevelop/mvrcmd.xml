@@ -8,7 +8,7 @@ public ICommand ${name=Action}Command
 
 private void ${name}()
 {
-	${Caret}
+	${Selection}
 }</Text>
 	<Description>RelayCommand (without CanExecute)</Description>
 	<Keyword>event</Keyword>

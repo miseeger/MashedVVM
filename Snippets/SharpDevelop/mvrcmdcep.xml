@@ -8,7 +8,7 @@ public ICommand ${name=Action}Command
 
 private void ${name}(${type} ${parameter})
 {
-	${Caret}
+	${Selection}
 }
 
 private bool CanExecute${name}(${type} ${parameter})

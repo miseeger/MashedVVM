@@ -1,0 +1,20 @@
+﻿<CodeSnippet>
+	<Name>stdevent</Name>
+	<Text>public event EventHandler ${name=Action}Event;
+
+protected virtual void On${toPropertyName(name)}
+{
+	EventHandler handler = ${toPropertyName(name)}Event;
+	if(handler != null)
+	{
+		handler(this, new EventArgs());
+	}
+}
+
+protected void Raise${toPropertyName(name)}
+{
+	On${toPropertyName(name)};
+}</Text>
+	<Description>Standard Eventhandler (with plain EventArgs)</Description>
+	<Keyword>event</Keyword>
+</CodeSnippet>

@@ -3,7 +3,7 @@
 	<Text>[Test]
 public void ${TestName}Test()
 {
-	${Caret}Assert.IsTrue(false);
+	Assert.IsTrue(${Selection});
 }</Text>
 	<Description>NUnit-Test</Description>
 	<Keyword>event</Keyword>

@@ -5,7 +5,7 @@
  * By  : Michael Seeger (www.codedriven.net)                                 *
  * Date: 15.05.2012                                                          *
  *                                                                           *
- * Taken from the SharpDevelop project (see link above) and extended.        *
+ * Taken from the SharpDevelop project (see link above) and modified.        *
  *                                                                           *
  * Licensed under the MS-PL (http://www.opensource.org/licenses/MS-PL)       *
  * ************************************************************************* */
@@ -79,7 +79,7 @@ namespace MashedVVM.Framework
 		{
 			if (_canExecuteChanged != null)
 			{
-				_canExecuteChanged (this, new EventArgs());
+				_canExecuteChanged(this, new EventArgs());
 			}
 		}
 
@@ -149,7 +149,7 @@ namespace MashedVVM.Framework
 		{
 			if (_canExecuteChanged != null)
 			{
-				_canExecuteChanged (this, new EventArgs());
+				_canExecuteChanged(this, new EventArgs());
 			}
 		}
 

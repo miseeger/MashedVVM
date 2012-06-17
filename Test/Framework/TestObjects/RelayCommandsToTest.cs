@@ -122,7 +122,6 @@ namespace MashedVVM.Test.Framework.TestObjects
 
 		private bool CanExecuteParamRcmdCe(string parameter)
 		{
-			RcmdWithParamCeCanExecuteExecuted = true;
 			return (CanExecute);
 		}
 

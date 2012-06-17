@@ -1,0 +1,10 @@
+﻿<CodeSnippet>
+	<Name>invokeevt</Name>
+	<Text>${EventhandlerType} handler = ${event};
+if (handler != null)
+{
+	handler(this, new ${Selection});
+}</Text>
+	<Description>Securely invoke Eventhandler</Description>
+	<Keyword>event</Keyword>
+</CodeSnippet>

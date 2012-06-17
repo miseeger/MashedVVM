@@ -1,0 +1,8 @@
+﻿<CodeSnippet>
+	<Name>#region</Name>
+	<Text>#region ${name=Regionname}
+	${Selection}
+#endregion</Text>
+	<Description>Region (with surrounding)</Description>
+	<Keyword>event</Keyword>
+</CodeSnippet>

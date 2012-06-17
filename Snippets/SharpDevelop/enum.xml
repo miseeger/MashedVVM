@@ -1,0 +1,9 @@
+﻿<CodeSnippet>
+	<Name>enum</Name>
+	<Text>enum ${name}
+{
+	${Selection}
+}</Text>
+	<Description>Enum</Description>
+	<Keyword>enum</Keyword>
+</CodeSnippet>

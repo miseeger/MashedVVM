@@ -65,7 +65,6 @@
     <Compile Include="Base\DataObject.cs" />
     <Compile Include="Base\EditableDataObject.cs" />
     <Compile Include="Base\Enum\DataObjectStatus.cs" />
-    <Compile Include="Base\Temp.cs" />
     <Compile Include="Base\ValidatableDataObject.cs" />
     <Compile Include="Base\NotifyableObject.cs" />
     <Compile Include="Base\Converters\DataObjectStatusToImageConverter.cs" />
@@ -108,12 +107,18 @@
     <None Include="Resources\deleted.png" />
     <None Include="Resources\modified.png" />
     <None Include="Resources\original.png" />
+    <None Include="Snippets\SharpDevelop\#if.xml" />
+    <None Include="Snippets\SharpDevelop\#region.xml" />
+    <None Include="Snippets\SharpDevelop\enum.xml" />
+    <None Include="Snippets\SharpDevelop\indexer.xml" />
+    <None Include="Snippets\SharpDevelop\invokeevt.xml" />
     <None Include="Snippets\SharpDevelop\mvpropn.xml" />
     <None Include="Snippets\SharpDevelop\mvpropnl.xml" />
     <None Include="Snippets\SharpDevelop\mvrcmd.xml" />
     <None Include="Snippets\SharpDevelop\mvrcmdce.xml" />
     <None Include="Snippets\SharpDevelop\mvrcmdcep.xml" />
     <None Include="Snippets\SharpDevelop\nutest.xml" />
+    <None Include="Snippets\SharpDevelop\stdevent.xml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\MashedVVMResources.resx" />

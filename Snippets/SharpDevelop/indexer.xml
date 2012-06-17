@@ -1,0 +1,10 @@
+﻿<CodeSnippet>
+	<Name>indexer</Name>
+	<Text>${access} ${type} this[${indextype} index]
+{
+	get {${Caret} /* return the specified index here */ }
+	set { /* set the specified index to value here */ }
+}</Text>
+	<Description>Creates an Indexer</Description>
+	<Keyword>event</Keyword>
+</CodeSnippet>

@@ -1,0 +1,8 @@
+﻿<CodeSnippet>
+	<Name>#if</Name>
+	<Text>#if ${Expression}
+	${Selection}
+#endif</Text>
+	<Description>conditional compilation block</Description>
+	<Keyword>event</Keyword>
+</CodeSnippet>
