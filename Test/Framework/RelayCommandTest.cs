@@ -22,7 +22,7 @@ namespace MashedVVM.Test.Framework
 	public class RelayCommandTest
 	{
 
-		#region ----- SimpleRcmd ----------------------------------------------
+		#region ----- SimpleRcmdCommand ---------------------------------------
 
 		[Test]
 		public void SimpleRcmdCommandExecuteTest()
@@ -88,8 +88,6 @@ namespace MashedVVM.Test.Framework
 		}
 
 		#endregion
-
-
 
 	}
 
