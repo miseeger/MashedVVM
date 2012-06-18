@@ -22,6 +22,48 @@ namespace MashedVVM.Test.Framework
 	public class RelayCommandTest
 	{
 
+		#region ----- SimpleRcmd ----------------------------------------------
+
+		[Test]
+		public void SimpleRcmdCommandExecuteTest()
+		{
+			var testObject = new RelayCommandsToTest();
+			testObject.SimpleRcmdCommand.Execute(this);
+			Assert.IsTrue(testObject.SimpleRcmdExecuted);
+		}
+
+		#endregion
+
+
+		#region ----- SimpleRcmdCeCommand -------------------------------------
+
+		[Test]
+		public void SimpleRcmdCeCommandExecuteTest()
+		{
+			var testObject = new RelayCommandsToTest();
+			testObject.SimpleRcmdCeCommand.Execute(this);
+			Assert.IsTrue(testObject.SimpleRcmdCeExecuted);
+		}
+
+
+		[Test]
+		public void SimpleRcmdCeCommandCanExecuteTest()
+		{
+			var testObject = new RelayCommandsToTest();
+			testObject.SimpleRcmdCeCommand.CanExecute(this);
+			Assert.IsTrue(testObject.SimpleRcmdCeCanExecuteExecuted);
+		}
+
+
+		[Test]
+		public void RaiseCanExecuteChangedOnSimpleRcmdCeCommandTest()
+		{
+			var testObject = new RelayCommandsToTest();
+			testObject.SimpleRcmdCeCommand.RaiseCanExecuteChanged();
+			Assert.IsTrue(testObject.SimpleRcmdCeCanExecuteChangedExecuted);
+		}
+
+
 		[Test]
 		public void ReevaluateOnLastnameChangeTest()
 		{
@@ -45,23 +87,9 @@ namespace MashedVVM.Test.Framework
 			Assert.IsTrue(testObject.SimpleRcmdCeCanExecuteChangedExecuted);
 		}
 
-
-		[Test]
-		public void RaiseCanExecuteChangedOnRelayCommandTest()
-		{
-			var testObject = new RelayCommandsToTest();
-			testObject.SimpleRcmdCeCommand.RaiseCanExecuteChanged();
-			Assert.IsTrue(testObject.SimpleRcmdCeCanExecuteChangedExecuted);
-		}
+		#endregion
 
 
-		[Test]
-		public void SimpleRcmdExecuteTest()
-		{
-			var testObject = new RelayCommandsToTest();
-			testObject.SimpleRcmdCommand.Execute(this);
-			Assert.IsTrue(testObject.SimpleRcmdExecuted);
-		}
 
 	}
 

@@ -32,7 +32,7 @@ namespace MashedVVM.Test.Framework.TestObjects
 
 		public bool RcmdWithParamCeExecuted { get; set; }
 		public string RcmdWithParamCeParamValue { get; set; }
-		
+
 		public bool CanExecute { get; set; }
 
 
