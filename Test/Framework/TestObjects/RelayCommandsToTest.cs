@@ -136,7 +136,7 @@ namespace MashedVVM.Test.Framework.TestObjects
 
 		public bool RcmdWithParamCeExecuted { get; set; }
 		public string RcmdWithParamCeParamValue { get; set; }
-		public bool RcmdWithParampCeCanExecuteExecuted { get; set; }
+		public bool RcmdWithParamCeCanExecuteExecuted { get; set; }
 		public string RcmdWithParamCeCanExecuteParamValue { get; set; }
 		public bool RcmdWithParamCeCanExecuteChangedExecuted {get; set; }
 
@@ -166,7 +166,7 @@ namespace MashedVVM.Test.Framework.TestObjects
 		private bool CanExecuteParamRcmdCe(string parameter)
 		{
 			RcmdWithParamCeCanExecuteParamValue = parameter;
-			RcmdWithParampCeCanExecuteExecuted = true;
+			RcmdWithParamCeCanExecuteExecuted = true;
 			return (CanExecute);
 		}
 

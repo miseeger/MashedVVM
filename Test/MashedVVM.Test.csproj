@@ -60,6 +60,8 @@
     <Compile Include="Base\TestObjects\ValidatableDataObjectToTest.cs" />
     <Compile Include="Base\ValidatableDataObjectTest.cs" />
     <Compile Include="Framework\RelayCommandTest.cs" />
+    <Compile Include="Framework\TestObjects\MessagePublisher.cs" />
+    <Compile Include="Framework\TestObjects\MessageSubscriber.cs" />
     <Compile Include="Framework\TestObjects\RelayCommandsToTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

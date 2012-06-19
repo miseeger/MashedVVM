@@ -50,8 +50,9 @@ namespace MashedVVM.Test.Framework
 		public void SimpleRcmdCeCommandCanExecuteTest()
 		{
 			var testObject = new RelayCommandsToTest();
+			testObject.CanExecute = false;
 			testObject.SimpleRcmdCeCommand.CanExecute(this);
-			Assert.IsTrue(testObject.SimpleRcmdCeCanExecuteExecuted);
+			Assert.IsTrue(!testObject.SimpleRcmdCeCommand.CanExecute(this) && testObject.SimpleRcmdCeCanExecuteExecuted);
 		}
 
 
@@ -85,6 +86,53 @@ namespace MashedVVM.Test.Framework
 			var rcmd = testObject.SimpleRcmdCeCommand;
 			testObject.Firstname = "John";
 			Assert.IsTrue(testObject.SimpleRcmdCeCanExecuteChangedExecuted);
+		}
+
+		#endregion
+
+
+		#region ----- ParamRcmdCommand ------------------------------------------------
+
+		[Test]
+		public void ParamRcmdCommandExecuteTest()
+		{
+			var testObject = new RelayCommandsToTest();
+			testObject.ParamRcmdCommand.Execute("executed");
+			Assert.IsTrue(testObject.RcmdWithParamExecuted && testObject.RcmdWithParamParamValue == "executed");
+		}
+
+		#endregion
+
+
+		#region ----- ParamRcmdCeCommand ------------------------------------------------
+
+		[Test]
+		public void ParamRcmdCeCommandExecuteTest()
+		{
+			var testObject = new RelayCommandsToTest();
+			testObject.ParamRcmdCeCommand.Execute("executed");
+			Assert.IsTrue(testObject.RcmdWithParamCeExecuted && testObject.RcmdWithParamCeParamValue == "executed");
+		}
+
+
+		[Test]
+		public void ParamRcmdCeCommandCanExecuteTest()
+		{
+			var testObject = new RelayCommandsToTest();
+			testObject.CanExecute = false;
+			testObject.ParamRcmdCeCommand.CanExecute("canexecuted");
+			Assert.IsTrue(!testObject.SimpleRcmdCeCommand.CanExecute("canexecuted") 
+				&& testObject.SimpleRcmdCeCanExecuteExecuted
+				&& testObject.RcmdWithParamCeCanExecuteParamValue == "canexecuted");
+		}
+
+
+		[Test]
+		public void RaiseCanExecuteChangedOnParamRcmdCeCommandTest()
+		{
+			var testObject = new RelayCommandsToTest();
+			testObject.ParamRcmdCeCommand.RaiseCanExecuteChanged();
+			Assert.IsTrue(testObject.RcmdWithParamCeCanExecuteChangedExecuted);
 		}
 
 		#endregion
