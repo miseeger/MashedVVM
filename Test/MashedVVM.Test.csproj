@@ -64,6 +64,8 @@
     <Compile Include="Framework\TestObjects\MessagePublisher.cs" />
     <Compile Include="Framework\TestObjects\MessageSubscriber.cs" />
     <Compile Include="Framework\TestObjects\RelayCommandsToTest.cs" />
+    <Compile Include="Framework\TestObjects\ViewModelBaseToTest.cs" />
+    <Compile Include="Framework\ViewModelBaseTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

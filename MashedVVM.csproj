@@ -55,16 +55,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\Attributes\ReevaluatePropertyAttribute.cs" />
+    <Compile Include="Base\Attributes\RegisterThisAttribute.cs" />
     <Compile Include="Base\Attributes\TriggerPropertyAttribute.cs" />
     <Compile Include="Base\Contracts\IDataObject.cs" />
     <Compile Include="Base\Contracts\IEditableDataObject.cs" />
+    <Compile Include="Base\Contracts\ILocator.cs" />
     <Compile Include="Base\Contracts\INotifyDataErrorInfo.cs" />
+    <Compile Include="Base\Contracts\IParent.cs" />
     <Compile Include="Base\Contracts\IValidatableDataObject.cs" />
     <Compile Include="Base\Contracts\IView.cs" />
     <Compile Include="Base\Contracts\IViewModel.cs" />
     <Compile Include="Base\DataObject.cs" />
     <Compile Include="Base\EditableDataObject.cs" />
     <Compile Include="Base\Enum\DataObjectStatus.cs" />
+    <Compile Include="Base\Exceptions\AlreadyRegisteredException.cs" />
     <Compile Include="Base\ValidatableDataObject.cs" />
     <Compile Include="Base\NotifyableObject.cs" />
     <Compile Include="Base\Converters\DataObjectStatusToImageConverter.cs" />
@@ -76,6 +80,7 @@
     <Compile Include="Framework\Behavior\EventHandlerGenerator.cs" />
     <Compile Include="Framework\Behavior\ExecutionStrategy.cs" />
     <Compile Include="Framework\Behavior\SimpleCommand.cs" />
+    <Compile Include="Framework\Locator.cs" />
     <Compile Include="Framework\MessageBroker.cs" />
     <Compile Include="Framework\RelayCommand.cs" />
     <Compile Include="Framework\ViewModel\EntityViewModelBase.cs" />
@@ -91,6 +96,7 @@
     <Folder Include="Base\Contracts" />
     <Folder Include="Base\Enum" />
     <Folder Include="Base\Attributes" />
+    <Folder Include="Base\Exceptions" />
     <Folder Include="Framework" />
     <Folder Include="Documentation" />
     <Folder Include="Base\Converters" />
