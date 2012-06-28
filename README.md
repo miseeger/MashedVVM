@@ -10,12 +10,12 @@ The library combines ideas from other MVVM libraries with some ideas from lesson
 couple of video tutorial sessions and books. 
 
 The 'mashed' parts of the framework are as followes:
-<ol>
+<ul>
 <li>MessageBroker to send and receive Messages between ViewModels.</li>
-<li>RelayCommand providing RaiseCanExecuteChanged.<li>
-<li>Locator to register ViewModels or Services in order to have a simple IoC.<li>
-<li>Attached Command Behavior to bind Commands to certain Events of WPF Controls.<li>
-</ol>
+<li>RelayCommand providing RaiseCanExecuteChanged.</li>
+<li>Locator to register ViewModels or Services in order to have a simple IoC.</li>
+<li>Attached Command Behavior to bind Commands to certain Events of WPF Controls.</li>
+</ul>
 
 !!! This project is currently a work-in-progress and some parts are not tested, yet. You use it at your own risk !!!
 
