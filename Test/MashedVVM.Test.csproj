@@ -66,10 +66,13 @@
     <Compile Include="Base\TestObjects\ValidatableDataObjectToTest.cs" />
     <Compile Include="Base\ValidatableDataObjectTest.cs" />
     <Compile Include="Framework\EntityViewModelBaseTest.cs" />
+    <Compile Include="Framework\LocatorTest.cs" />
     <Compile Include="Framework\MessageBrokerTest.cs" />
     <Compile Include="Framework\RelayCommandTest.cs" />
     <Compile Include="Framework\StatusViewModelBaseTest.cs" />
+    <Compile Include="Framework\TestObjects\ConsoleLoggerToTest.cs" />
     <Compile Include="Framework\TestObjects\EntityViewModelBaseToTest.cs" />
+    <Compile Include="Framework\TestObjects\ILogger.cs" />
     <Compile Include="Framework\TestObjects\MessagePublisher.cs" />
     <Compile Include="Framework\TestObjects\MessageSubscriber.cs" />
     <Compile Include="Framework\TestObjects\RelayCommandsToTest.cs" />

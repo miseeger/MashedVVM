@@ -20,8 +20,11 @@ using System.Diagnostics;
 namespace MashedVVM.Framework
 {
 
-	internal class Locator : ILocator
+	public class Locator : ILocator
 	{
+
+		private static Locator _locatorInstance;
+		private static readonly object SyncLock = new object();
 
 		private Dictionary<string, object> container = new Dictionary<string, object>();
 
@@ -30,6 +33,18 @@ namespace MashedVVM.Framework
 		{
 			Reload();
 		}
+
+
+		public static Locator Instance
+		{
+			get
+			{
+				lock (SyncLock)
+				{
+					return _locatorInstance ?? (_locatorInstance = new Locator());
+				}
+			}
+		}		
 
 
 		public void Register(string name, object o)
@@ -46,9 +61,9 @@ namespace MashedVVM.Framework
 			else {
 				throw new AlreadyRegisteredException
 					(
-						String.Format("An instance with named '{0}' is already registered.", name)
+						String.Format("An instance named '{0}' is already registered.", name)
 					);
-			}
+		}
 		}
 
 
