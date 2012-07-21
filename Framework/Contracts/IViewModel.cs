@@ -4,29 +4,21 @@
  * Created with SharpDevelop (http://www.icsharpcode.net/OpenSource/SD/)     *
  * By  : Michael Seeger (www.codedriven.net)                                 *
  *                                                                           *
- * Licensed under the MS-PL (http://www.opensource.org/licenses/MS-PL)       *
+ * This code is distributed under the MS Public License. For more details    *
+ * see http://www.opensource.org/licenses/MS-PL.                             *
+ *                                                                           *
  * ************************************************************************* */
 
-using System.Windows.Controls;
-using MashedVVM.Framework.Contracts;
+using System.ComponentModel;
 
-namespace MashedVVM.Framework.View
+namespace MashedVVM.Framework.Contracts
 {
-
-	public abstract class UserControlViewBase: UserControl, IView
+	
+	public interface IViewModel : INotifyPropertyChanged
 	{
-
-		public virtual IViewModel ViewModel
-		{
-			get
-			{
-				return (IViewModel)DataContext;
-			}
-			set
-			{
-				DataContext = value;
-			}
-		}
-
+		IView View { get; set; }
+		bool IsBusy { get; set; }
+		bool InDesign { get; }
+		void Initialize();
 	}
 }

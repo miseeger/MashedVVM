@@ -6,7 +6,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace MashedVVM.Base.Exceptions
+namespace MashedVVM.Framework.Exceptions
 {
 
 	public class AlreadyRegisteredException : Exception, ISerializable

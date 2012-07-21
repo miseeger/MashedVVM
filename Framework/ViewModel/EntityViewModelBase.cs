@@ -11,7 +11,7 @@ using System;
 using System.ComponentModel;
 using System.Windows;
 using MashedVVM.Base;
-using MashedVVM.Base.Contracts;
+using MashedVVM.Framework.Contracts;
 
 namespace MashedVVM.Framework.ViewModel
 {

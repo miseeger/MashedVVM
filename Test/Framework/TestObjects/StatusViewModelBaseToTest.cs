@@ -7,26 +7,32 @@
  * Licensed under the MS-PL (http://www.opensource.org/licenses/MS-PL)       *
  * ************************************************************************* */
 
-using System.Windows.Controls;
+using System;
 using MashedVVM.Framework.Contracts;
+using MashedVVM.Framework.ViewModel;
 
-namespace MashedVVM.Framework.View
+namespace MashedVVM.Test.Framework.TestObjects
 {
 
-	public abstract class UserControlViewBase: UserControl, IView
+	public class StatusViewModelBaseToTest : StatusViewModelBase
 	{
 
-		public virtual IViewModel ViewModel
+		public string ChangedPropertyName { get; set; }
+		public Boolean Initialized { get; set; }
+
+
+		public StatusViewModelBaseToTest(IView view): base(view)
 		{
-			get
-			{
-				return (IViewModel)DataContext;
-			}
-			set
-			{
-				DataContext = value;
-			}
+			PropertyChanged += (s, e) => { ChangedPropertyName = e.PropertyName; };
+		}
+
+
+		public override void Initialize()
+		{
+			base.Initialize();
+			Initialized = true;
 		}
 
 	}
+
 }

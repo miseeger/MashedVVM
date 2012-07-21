@@ -1,4 +1,4 @@
-﻿/* ************************************************************************* *
+﻿ /* ************************************************************************* *
  * MashedVVM.Test                                                            *
  *                                                                           *
  * Created with SharpDevelop (http://www.icsharpcode.net/OpenSource/SD/)     *
@@ -17,14 +17,14 @@ namespace MashedVVM.Test.Framework
 {
 
 	[TestFixture]
-	public class ViewModelBaseTest
+	public class StatusViewModelBaseTest
 	{
 
 		[Test]
 		public void InitializeTest()
 		{
-			var testView = new UserControlViewBaseToTest();
-			var testViewModel = new ViewModelBaseToTest(testView);
+			var testView = new WindowViewBaseToTest();
+			var testViewModel = new StatusViewModelBaseToTest(testView);
 			Assert.IsTrue
 			(
 				testViewModel.Initialized
@@ -37,8 +37,8 @@ namespace MashedVVM.Test.Framework
 		[Test]
 		public void InDesignTest()
 		{
-			var testView = new UserControlViewBaseToTest();
-			var testViewModel = new ViewModelBaseToTest(testView);
+			var testView = new WindowViewBaseToTest();
+			var testViewModel = new StatusViewModelBaseToTest(testView);
 			Assert.IsFalse(testViewModel.InDesign);
 		}
 
@@ -46,17 +46,17 @@ namespace MashedVVM.Test.Framework
 		[Test]
 		public void ToStringTest()
 		{
-			var testView = new UserControlViewBaseToTest();
-			var testViewModel = new ViewModelBaseToTest(testView);
-			Assert.IsTrue(testViewModel.ToString() == "ViewModel ViewModelBaseToTest");
+			var testView = new WindowViewBaseToTest();
+			var testViewModel = new StatusViewModelBaseToTest(testView);
+			Assert.IsTrue(testViewModel.ToString() == "StatusViewModel StatusViewModelBaseToTest");
 		}
 
 
 		[Test]
 		public void IsBusyTest()
 		{
-			var testView = new UserControlViewBaseToTest();
-			var testViewModel = new ViewModelBaseToTest(testView);
+			var testView = new WindowViewBaseToTest();
+			var testViewModel = new StatusViewModelBaseToTest(testView);
 			testViewModel.IsBusy = true;
 			Assert.IsTrue
 			(
@@ -64,6 +64,7 @@ namespace MashedVVM.Test.Framework
 				&& testViewModel.IsBusy
 			);
 		}
+
 
 	}
 

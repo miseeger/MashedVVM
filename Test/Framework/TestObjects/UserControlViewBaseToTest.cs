@@ -7,26 +7,19 @@
  * Licensed under the MS-PL (http://www.opensource.org/licenses/MS-PL)       *
  * ************************************************************************* */
 
-using System.Windows.Controls;
-using MashedVVM.Framework.Contracts;
+using System;
+using MashedVVM.Framework.View;
 
-namespace MashedVVM.Framework.View
+namespace MashedVVM.Test.Framework.TestObjects
 {
 
-	public abstract class UserControlViewBase: UserControl, IView
+	public class UserControlViewBaseToTest: UserControlViewBase
 	{
 
-		public virtual IViewModel ViewModel
+		public UserControlViewBaseToTest()
 		{
-			get
-			{
-				return (IViewModel)DataContext;
-			}
-			set
-			{
-				DataContext = value;
-			}
 		}
 
 	}
 }
+

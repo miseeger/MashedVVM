@@ -1,4 +1,4 @@
-﻿ /* ************************************************************************* *
+﻿/* ************************************************************************* *
  * MashedVVM                                                                 *
  *                                                                           *
  * Created with SharpDevelop (http://www.icsharpcode.net/OpenSource/SD/)     *
@@ -11,16 +11,19 @@
 
 using System;
 
-namespace MashedVVM.Base.Contracts
+namespace MashedVVM.Framework.Attributes
 {
 
-	public interface ILocator
+	public class RegisterThisAttribute : Attribute
 	{
 
-		void Register(string name, object o);
-		void Reload();
-		object GetInstance(string name);
-		object this[string name] { get; }
+		public string Name { get; set; }
+
+
+		public RegisterThisAttribute(string name)
+		{
+			Name = name;
+		}
 
 	}
 

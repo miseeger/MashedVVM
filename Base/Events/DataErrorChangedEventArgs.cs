@@ -4,29 +4,26 @@
  * Created with SharpDevelop (http://www.icsharpcode.net/OpenSource/SD/)     *
  * By  : Michael Seeger (www.codedriven.net)                                 *
  *                                                                           *
- * Licensed under the MS-PL (http://www.opensource.org/licenses/MS-PL)       *
+ * This code is distributed under the MS Public License. For more details    *
+ * see http://www.opensource.org/licenses/MS-PL.                             *
+ *                                                                           *
  * ************************************************************************* */
+using System;
+using System.ComponentModel;
 
-using System.Windows.Controls;
-using MashedVVM.Framework.Contracts;
-
-namespace MashedVVM.Framework.View
+namespace MashedVVM.Base.Events
 {
 
-	public abstract class UserControlViewBase: UserControl, IView
+	public sealed class DataErrorsChangedEventArgs : EventArgs
 	{
 
-		public virtual IViewModel ViewModel
+		public string PropertyName { get; private set; }
+
+		public DataErrorsChangedEventArgs (string propertyName)
 		{
-			get
-			{
-				return (IViewModel)DataContext;
-			}
-			set
-			{
-				DataContext = value;
-			}
+			this.PropertyName = propertyName;
 		}
 
 	}
+
 }

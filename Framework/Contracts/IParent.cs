@@ -11,20 +11,15 @@
 
 using System;
 
-namespace MashedVVM.Base.Attributes
+namespace MashedVVM.Framework.Contracts
 {
 
-	public class RegisterThisAttribute : Attribute
+	public interface IParent
 	{
 
-		public string Name { get; set; }
-
-
-		public RegisterThisAttribute(string name)
-		{
-			Name = name;
-		}
+		object Parent { get; set; }
 
 	}
 
 }
+

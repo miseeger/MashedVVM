@@ -1,25 +1,24 @@
-﻿/* ************************************************************************* *
+﻿ /* ************************************************************************* *
  * MashedVVM                                                                 *
  *                                                                           *
  * Created with SharpDevelop (http://www.icsharpcode.net/OpenSource/SD/)     *
  * By  : Michael Seeger (www.codedriven.net)                                 *
  *                                                                           *
- * This code is distributed under the MS Public License. For more details    *
- * see http://www.opensource.org/licenses/MS-PL.                             *
- *                                                                           *
+ * Licensed under the MS-PL (http://www.opensource.org/licenses/MS-PL)       *
  * ************************************************************************* */
 
 using System;
+using MashedVVM.Framework.View;
 
-namespace MashedVVM.Base.Contracts
+namespace MashedVVM.Test.Framework.TestObjects
 {
 
-	public interface IParent
+	public class WindowViewBaseToTest: WindowViewBase
 	{
 
-		object Parent { get; set; }
+		public WindowViewBaseToTest()
+		{
+		}
 
 	}
-
 }
-

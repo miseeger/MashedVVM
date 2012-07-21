@@ -10,7 +10,7 @@
 using System;
 using System.ComponentModel;
 using System.Windows;
-using MashedVVM.Base.Contracts;
+using MashedVVM.Framework.Contracts;
 using DataObject = MashedVVM.Base.DataObject;
 
 namespace MashedVVM.Framework.ViewModel

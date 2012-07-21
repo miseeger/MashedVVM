@@ -8,24 +8,31 @@
  * ************************************************************************* */
 
 using System;
-using MashedVVM.Framework;
+using MashedVVM.Framework.Contracts;
+using MashedVVM.Framework.ViewModel;
+
 
 namespace MashedVVM.Test.Framework.TestObjects
 {
-	/// <summary>
-	/// Description of ViewModelBaseToTest.
-	/// </summary>
+
 	public class ViewModelBaseToTest : ViewModelBase
 	{
 
 		public string ChangedPropertyName { get; set; }
+		public Boolean Initialized { get; set; }
 
 
-		public ViewModelBaseToTest()
+		public ViewModelBaseToTest(IView view): base(view)
 		{
 			PropertyChanged += (s, e) => { ChangedPropertyName = e.PropertyName; };
 		}
 
+
+		public override void Initialize()
+		{
+			base.Initialize();
+			Initialized = true;
+		}
 
 	}
 }

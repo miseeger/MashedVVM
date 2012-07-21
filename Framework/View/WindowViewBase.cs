@@ -8,9 +8,9 @@
  * ************************************************************************* */
  
 using System.Windows;
-using MashedVVM.Base.Contracts;
+using MashedVVM.Framework.Contracts;
 
-namespace MashedVVM.Framework
+namespace MashedVVM.Framework.View
 {
 
 	public abstract class WindowViewBase: Window, IView

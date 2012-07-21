@@ -44,9 +44,15 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -59,12 +65,18 @@
     <Compile Include="Base\TestObjects\NotifyableObjectToTest.cs" />
     <Compile Include="Base\TestObjects\ValidatableDataObjectToTest.cs" />
     <Compile Include="Base\ValidatableDataObjectTest.cs" />
+    <Compile Include="Framework\EntityViewModelBaseTest.cs" />
     <Compile Include="Framework\MessageBrokerTest.cs" />
     <Compile Include="Framework\RelayCommandTest.cs" />
+    <Compile Include="Framework\StatusViewModelBaseTest.cs" />
+    <Compile Include="Framework\TestObjects\EntityViewModelBaseToTest.cs" />
     <Compile Include="Framework\TestObjects\MessagePublisher.cs" />
     <Compile Include="Framework\TestObjects\MessageSubscriber.cs" />
     <Compile Include="Framework\TestObjects\RelayCommandsToTest.cs" />
+    <Compile Include="Framework\TestObjects\StatusViewModelBaseToTest.cs" />
+    <Compile Include="Framework\TestObjects\UserControlViewBaseToTest.cs" />
     <Compile Include="Framework\TestObjects\ViewModelBaseToTest.cs" />
+    <Compile Include="Framework\TestObjects\WindowViewBaseToTest.cs" />
     <Compile Include="Framework\ViewModelBaseTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
