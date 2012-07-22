@@ -67,7 +67,7 @@ namespace MashedVVM.Framework
 		}
 
 
-		public object GetInstance(string name)
+		public object Resolve(string name)
 		{
 			if (container.ContainsKey(name))
 			{
@@ -81,7 +81,7 @@ namespace MashedVVM.Framework
 		{
 			get
 			{
-				return GetInstance(name);
+				return Resolve(name);
 			}
 		}
 

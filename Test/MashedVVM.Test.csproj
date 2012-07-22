@@ -71,6 +71,7 @@
     <Compile Include="Framework\RelayCommandTest.cs" />
     <Compile Include="Framework\StatusViewModelBaseTest.cs" />
     <Compile Include="Framework\TestObjects\ConsoleLoggerToTest.cs" />
+    <Compile Include="Framework\TestObjects\DebugLoggerToTest.cs" />
     <Compile Include="Framework\TestObjects\EntityViewModelBaseToTest.cs" />
     <Compile Include="Framework\TestObjects\ILogger.cs" />
     <Compile Include="Framework\TestObjects\MessagePublisher.cs" />

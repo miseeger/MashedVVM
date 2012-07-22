@@ -11,6 +11,7 @@
  
 using System;
 using MashedVVM.Framework;
+using MashedVVM.Framework.Exceptions;
 using MashedVVM.Test.Framework.TestObjects;
 using NUnit.Framework;
 
@@ -25,7 +26,7 @@ namespace MashedVVM.Test.Framework
 		public void InitLocatorTest1()
 		{
 			var locator = Locator.Instance;
-			var logger = (ILogger)locator["Logger"];
+			var logger = (ILogger)locator["ConsoleLogger"];
 			logger.Log("Test!");
 			Assert.IsTrue(logger is ILogger);
 		}
@@ -35,9 +36,49 @@ namespace MashedVVM.Test.Framework
 		public void InitLocatorTest2()
 		{
 			var locator = Locator.Instance;
-			var logger = (ILogger)locator.GetInstance("Logger");
+			var logger = (ILogger)locator.Resolve("ConsoleLogger");
 			logger.Log("Test2!");
 			Assert.IsTrue(logger is ILogger);
+		}
+
+
+		[Test]
+		public void RegisterManuallyTest1()
+		{
+			var locator = Locator.Instance;
+			try 
+			{
+				locator.Register("DebugLogger", new DebugLoggerToTest());
+			}
+			catch (AlreadyRegisteredException) 
+			{
+			}
+			finally
+			{
+				var logger = (ILogger)locator.Resolve("DebugLogger");
+				logger.Log("Test3!");
+				Assert.IsTrue(logger is ILogger);
+			}
+		}
+
+
+		[Test]
+		public void RegisterManuallyTest2()
+		{
+			var locator = Locator.Instance;
+			try 
+			{
+				locator.Register("DebugLogger", new DebugLoggerToTest());
+			}
+			catch (AlreadyRegisteredException) 
+			{
+			}
+			finally
+			{
+				var logger = (ILogger)locator["DebugLogger"];
+				logger.Log("Test4!");
+				Assert.IsTrue(logger is ILogger);
+			}
 		}
 
 	}

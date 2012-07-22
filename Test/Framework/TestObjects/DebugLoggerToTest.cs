@@ -4,23 +4,24 @@
  * Created with SharpDevelop (http://www.icsharpcode.net/OpenSource/SD/)     *
  * By  : Michael Seeger (www.codedriven.net)                                 *
  *                                                                           *
- * This code is distributed under the MS Public License. For more details    *
- * see http://www.opensource.org/licenses/MS-PL.                             *
- *                                                                           *
+ * Licensed under the MS-PL (http://www.opensource.org/licenses/MS-PL)       *
  * ************************************************************************* */
 
 using System;
+using System.Diagnostics;
+using MashedVVM.Framework;
+using MashedVVM.Framework.Attributes;
 
-namespace MashedVVM.Framework.Contracts
+namespace MashedVVM.Test.Framework.TestObjects
 {
 
-	public interface ILocator
+	public class DebugLoggerToTest: ILogger
 	{
 
-		void Register(string name, object o);
-		void Reload();
-		object Resolve(string name);
-		object this[string name] { get; }
+		public void Log (string text)
+		{
+			Debug.WriteLine("Debug: " + text);
+		}
 
 	}
 

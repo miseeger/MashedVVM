@@ -15,13 +15,12 @@ using MashedVVM.Framework.Attributes;
 namespace MashedVVM.Test.Framework.TestObjects
 {
 
-	[RegisterThis("Logger")]
+	[RegisterThis("ConsoleLogger")]
 	public class ConsoleLoggerToTest: ILogger
 	{
 
 		public void Log (string text)
 		{
-			Debug.WriteLine("Debug: " + text);
 			System.Console.WriteLine("Console: " + text);
 		}
 
