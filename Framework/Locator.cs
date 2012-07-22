@@ -77,6 +77,16 @@ namespace MashedVVM.Framework
 		}
 
 
+		public T Resolve<T>(string name)
+		{
+			if (container.ContainsKey(name))
+			{
+				return (T)container[name];
+			}
+			return default(T);
+		}
+
+
 		public object this[string name]
 		{
 			get

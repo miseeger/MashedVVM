@@ -1,5 +1,5 @@
 ﻿/* ************************************************************************* *
- * MashedVVM                                                                 *
+ * MashedVVM.Test                                                            *
  *                                                                           *
  * Created with SharpDevelop (http://www.icsharpcode.net/OpenSource/SD/)     *
  * By  : Michael Seeger (www.codedriven.net)                                 *

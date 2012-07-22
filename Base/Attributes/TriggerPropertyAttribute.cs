@@ -11,6 +11,7 @@
  * see http://www.opensource.org/licenses/MS-PL.                             *
  *                                                                           *
  * ************************************************************************* */
+
 using System;
 
 namespace MashedVVM.Base.Attributes

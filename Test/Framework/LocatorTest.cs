@@ -1,4 +1,4 @@
-﻿  /* ************************************************************************* *
+﻿/* ************************************************************************* *
  * MashedVVM.Test                                                            *
  *                                                                           *
  * Created with SharpDevelop (http://www.icsharpcode.net/OpenSource/SD/)     *
@@ -43,6 +43,16 @@ namespace MashedVVM.Test.Framework
 
 
 		[Test]
+		public void InitLocatorTest3()
+		{
+			var locator = Locator.Instance;
+			var logger = locator.Resolve<ILogger>("ConsoleLogger");
+			logger.Log("Test3!");
+			Assert.IsTrue(logger is ILogger);
+		}
+
+
+		[Test]
 		public void RegisterManuallyTest1()
 		{
 			var locator = Locator.Instance;
@@ -56,7 +66,7 @@ namespace MashedVVM.Test.Framework
 			finally
 			{
 				var logger = (ILogger)locator.Resolve("DebugLogger");
-				logger.Log("Test3!");
+				logger.Log("Test4!");
 				Assert.IsTrue(logger is ILogger);
 			}
 		}
@@ -76,11 +86,32 @@ namespace MashedVVM.Test.Framework
 			finally
 			{
 				var logger = (ILogger)locator["DebugLogger"];
-				logger.Log("Test4!");
+				logger.Log("Test5!");
 				Assert.IsTrue(logger is ILogger);
 			}
 		}
 
+
+		[Test]
+		public void RegisterManuallyTest3()
+		{
+			var locator = Locator.Instance;
+			try 
+			{
+				locator.Register("DebugLogger", new DebugLoggerToTest());
+			}
+			catch (AlreadyRegisteredException) 
+			{
+			}
+			finally
+			{
+				var logger = locator.Resolve<ILogger>("DebugLogger");
+				logger.Log("Test6!");
+				Assert.IsTrue(logger is ILogger);
+			}
+		}
+		
+		
 	}
 
 }
