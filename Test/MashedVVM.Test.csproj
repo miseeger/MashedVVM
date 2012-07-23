@@ -92,6 +92,7 @@
     <Folder Include="Base\TestObjects" />
     <Folder Include="Framework" />
     <Folder Include="Framework\TestObjects" />
+    <Folder Include="Persistence" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MashedVVM.csproj">
