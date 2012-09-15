@@ -47,7 +47,12 @@ namespace MashedVVM.Base
 
 		public void EndEdit()
 		{
-			_memento = null;
+
+			if (_memento != null)
+			{
+				_memento = null;
+			}
+
 		}
 
 
