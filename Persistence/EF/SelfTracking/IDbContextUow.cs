@@ -11,6 +11,7 @@
 
 using System;
 using System.Data.Entity;
+using MashedVVM.Base;
 using MashedVVM.Base.Contracts;
 
 namespace MashedVVM.Persistence.EF.Selftracking
@@ -19,6 +20,6 @@ namespace MashedVVM.Persistence.EF.Selftracking
     {
         void Save(Action finishAction);
         void ResetSession();
-        void ReLoadFromDb<T>(DbSet<T> dbSet) where T : IDataObject;
+        void ReLoadFromDb<T>(DbSet<T> dbSet) where T : DataObject;
     }
 }

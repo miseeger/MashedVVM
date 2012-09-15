@@ -11,11 +11,14 @@
 
 using System;
 using System.Data;
+using System.Data.Common;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
-using MashedVVM.Base.Enum;
+
+using MashedVVM.Base;
 using MashedVVM.Base.Contracts;
+using MashedVVM.Base.Enum;
 
  namespace MashedVVM.Persistence.EF.Selftracking
 {
@@ -81,7 +84,7 @@ using MashedVVM.Base.Contracts;
         }
 
 
-        public void ReLoadFromDb<T>(DbSet<T> dbSet) where T : IDataObject
+        public void ReLoadFromDb<T>(DbSet<T> dbSet) where T : DataObject
         {
             foreach (var entity in dbSet.Local)
             {
