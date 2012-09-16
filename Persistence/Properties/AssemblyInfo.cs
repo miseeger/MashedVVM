@@ -6,6 +6,6 @@ using System.Runtime.InteropServices;
 
 #endregion
 
-[assembly: AssemblyTitle("MashedVVM")]
-[assembly: AssemblyDescription("MashedVVM Core Library")]
+[assembly: AssemblyTitle("MashedVVM.Persistence")]
+[assembly: AssemblyDescription("MashedVVM Persistence Module")]
 

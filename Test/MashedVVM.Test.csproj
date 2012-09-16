@@ -56,6 +56,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="Base\DataObjectStatusToImageConverterTest.cs" />
     <Compile Include="Base\DataObjectTest.cs" />
     <Compile Include="Base\EditableDataObjectTest.cs" />

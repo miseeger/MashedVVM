@@ -8,6 +8,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MashedVVM.Test", "Test\Mash
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MashedVVM.Persistence", "Persistence\MashedVVM.Persistence.csproj", "{478433E4-CDB6-4041-ABCF-0678A6AF4F5F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B8EA7F98-EF2D-4D9F-98F4-310B0C74F626}"
+	ProjectSection(SolutionItems) = postProject
+		GlobalAssemblyInfo.cs = GlobalAssemblyInfo.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
