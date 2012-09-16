@@ -19,6 +19,8 @@ The 'mashed' parts of the framework are as followes:
 <li>Attached Command Behavior to bind Commands to certain Events of WPF Controls.</li>
 </ul>
 
+<a href="http://nuget.org/packages/MashedVVM">You'll find the MashedVVM NuGet package here.</a>
+
 !!! This project is currently a work-in-progress and some parts are not tested, yet. You use it at your own risk !!!
 
 
