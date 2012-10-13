@@ -30,7 +30,6 @@ namespace MashedVVM.Test.Framework.TestObjects
 
 		public override void Initialize()
 		{
-			base.Initialize();
 			Initialized = true;
 		}
 

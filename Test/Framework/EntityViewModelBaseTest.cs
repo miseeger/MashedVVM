@@ -16,7 +16,7 @@ using NUnit.Framework;
 namespace MashedVVM.Test.Framework
 {
 
-	[TestFixture]
+	[TestFixture, RequiresSTA]
 	public class EntityViewModelBaseTest
 	{
 
