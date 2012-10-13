@@ -58,14 +58,12 @@ namespace MashedVVM.Framework.ViewModel
 			InDesign = (bool)DependencyPropertyDescriptor.FromProperty(DesignerProperties.IsInDesignModeProperty, 
 						typeof(FrameworkElement)).Metadata.DefaultValue;
 
-			Initialize();
 		}
 
 
 		public virtual void Initialize()
 		{
-		
-		}
+  		}
 		
 		
 		public override string ToString()

@@ -25,6 +25,7 @@ namespace MashedVVM.Test.Framework
 		{
 			var testView = new WindowViewBaseToTest();
 			var testViewModel = new StatusViewModelBaseToTest(testView);
+			testViewModel.Initialize();
 			Assert.IsTrue
 			(
 				testViewModel.Initialized

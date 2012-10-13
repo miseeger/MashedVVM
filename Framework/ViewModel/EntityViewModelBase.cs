@@ -60,7 +60,6 @@ namespace MashedVVM.Framework.ViewModel
 				.FromProperty(DesignerProperties.IsInDesignModeProperty,
 					typeof(FrameworkElement)).Metadata.DefaultValue;
 
-			Initialize();
 		}
 
 

@@ -25,6 +25,7 @@ namespace MashedVVM.Test.Framework
 		{
 			var testView = new UserControlViewBaseToTest();
 			var testViewModel = new ViewModelBaseToTest(testView);
+			testViewModel.Initialize();
 			Assert.IsTrue
 			(
 				testViewModel.Initialized
