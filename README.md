@@ -9,6 +9,8 @@ provided which are implemented in those classes to have them ready-to-use in an 
 The library combines ideas from other MVVM libraries with some ideas from lessons learned in a 
 couple of video tutorial sessions and books. 
 
+To have a closer look on how to use MashedVVM, please refer to the tests ;-)
+
 The 'mashed' parts of the framework are as followes:
 <ul>
 <li>MessageBroker to send and receive Messages between ViewModels.</li>
@@ -17,5 +19,8 @@ The 'mashed' parts of the framework are as followes:
 <li>Attached Command Behavior to bind Commands to certain Events of WPF Controls.</li>
 </ul>
 
+<a href="http://nuget.org/packages/MashedVVM">You'll find the MashedVVM NuGet package here.</a>
+
 !!! This project is currently a work-in-progress and some parts are not tested, yet. You use it at your own risk !!!
+
 
