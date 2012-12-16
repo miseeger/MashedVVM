@@ -48,18 +48,21 @@ namespace MashedVVM.Framework.ViewModel
 		public Boolean InDesign { get; private set; }
 
 
-		protected StatusViewModelBase(IView view)
+		protected StatusViewModelBase()
 		{
+			InDesign = (bool)DependencyPropertyDescriptor
+				.FromProperty(DesignerProperties.IsInDesignModeProperty,
+					typeof(FrameworkElement)).Metadata.DefaultValue;
+		}
 
+
+		protected StatusViewModelBase(IView view) : this()
+		{
 			if (view != null)
 			{
 				View = view;
 			}
 			
-			InDesign = (bool)DependencyPropertyDescriptor
-				.FromProperty(DesignerProperties.IsInDesignModeProperty,
-					typeof(FrameworkElement)).Metadata.DefaultValue;
-
 		}
 
 
