@@ -108,7 +108,15 @@ namespace MashedVVM.Test.Base
 			);
 		}
 
-		
-		
+
+		[Test]
+		public void IsDirtyTest()
+		{
+			var testObject = new DataObjectToTest();
+			testObject.Name = "TestName";
+			Assert.IsTrue(testObject.IsDirty == true);
+		}
+
 	}
+
 }

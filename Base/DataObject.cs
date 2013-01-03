@@ -32,15 +32,24 @@ namespace MashedVVM.Base
 
 		protected DataObject()
 		{
-			ObjectStatusIgnoringProperties = new List<string>() { "IsBusy", "IsDirty", "HasErrors", "IsValid" };
+			ObjectStatusIgnoringProperties = new List<string>() 
+												{ 
+													"IsBusy", 
+													"IsDirty", 
+													"HasErrors", 
+													"IsValid", 
+													"View",
+													"VmTitle"
+												};
 
 			PropertyChanged += (o, e) =>
 			{
 				if (ObjectStatus == DataObjectStatus.Original
 					&& !(e.PropertyName.Equals(ExtractPropertyName(() => ObjectStatus))
-				         || ObjectStatusIgnoringProperties.Contains(e.PropertyName)))
+						|| ObjectStatusIgnoringProperties.Contains(e.PropertyName)))
 				{
 					ObjectStatus = DataObjectStatus.Modified;
+					IsDirty = true;
 				}
 			};
 
@@ -57,6 +66,21 @@ namespace MashedVVM.Base
 				{
 					_objectStatus = value;
 					RaisePropertyChanged(() => ObjectStatus);
+				}
+			}
+		}
+
+
+		private bool _isDirty = false;
+		public bool IsDirty
+		{
+			get { return _isDirty; }
+			set
+			{
+				if(_isDirty != value)
+				{
+					_isDirty = value;
+					RaisePropertyChanged(() =>  IsDirty);
 				}
 			}
 		}

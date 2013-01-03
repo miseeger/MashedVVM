@@ -28,6 +28,17 @@ namespace MashedVVM.Base
 	{
 
 		private Dictionary<string, object> _memento;
+		private IEnumerable<string> _mementoIgnoringProperties;
+
+
+		public EditableDataObject()
+		{
+			_mementoIgnoringProperties = new List<string>() 
+											{
+												"View", 
+												"VmTitle"
+											};
+		}
 
 
 		public void BeginEdit()
@@ -36,8 +47,8 @@ namespace MashedVVM.Base
 			PropertyInfo[] properties = this.GetType().GetProperties();
 			foreach (PropertyInfo pi in properties)
 			{
-				// ignore R/O properties!
-				if (pi.CanWrite)
+				// ignore R/O properties and _mementoIgnoringProperties!
+				if (pi.CanWrite && !_mementoIgnoringProperties.Contains(pi.Name))
 				{
 					_memento.Add(pi.Name, pi.GetValue(this, null));
 				}
@@ -61,7 +72,7 @@ namespace MashedVVM.Base
 			PropertyInfo[] properties = this.GetType().GetProperties();
 			foreach (PropertyInfo pi in properties)
 			{
-				if (pi.CanWrite)
+				if (pi.CanWrite && !_mementoIgnoringProperties.Contains(pi.Name))
 				{
 					pi.SetValue(this, _memento[pi.Name], null);
 				}
