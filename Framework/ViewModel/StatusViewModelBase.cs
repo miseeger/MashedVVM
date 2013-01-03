@@ -48,6 +48,21 @@ namespace MashedVVM.Framework.ViewModel
 		public Boolean InDesign { get; private set; }
 
 
+		private string _vmTitle;
+		public string VmTitle
+		{
+			get { return _vmTitle; }
+			set
+			{
+				if(_vmTitle != value)
+				{
+					_vmTitle = value;
+					RaisePropertyChanged(() => VmTitle);
+				}
+			}
+		}
+
+
 		protected StatusViewModelBase()
 		{
 			InDesign = (bool)DependencyPropertyDescriptor
