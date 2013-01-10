@@ -13,10 +13,10 @@ using MashedVVM.Framework.Contracts;
 namespace MashedVVM.Framework.View
 {
 
-	public abstract class WindowViewBase: Window, IView
+	public class WindowViewBase: Window, IView
 	{
 
-		public virtual IViewModel ViewModel
+		public IViewModel ViewModel
 		{
 			get
 			{

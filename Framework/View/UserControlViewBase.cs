@@ -13,10 +13,10 @@ using MashedVVM.Framework.Contracts;
 namespace MashedVVM.Framework.View
 {
 
-	public abstract class UserControlViewBase: UserControl, IView
+	public class UserControlViewBase: UserControl, IView
 	{
 
-		public virtual IViewModel ViewModel
+		public IViewModel ViewModel
 		{
 			get
 			{
