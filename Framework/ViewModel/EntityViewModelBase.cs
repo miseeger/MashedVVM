@@ -76,6 +76,7 @@ namespace MashedVVM.Framework.ViewModel
 			if (view != null)
 			{
 				View = view;
+				View.ViewModel = this;
 			}
 		}
 
