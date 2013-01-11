@@ -30,6 +30,7 @@ namespace MashedVVM.Test.Base
 			testObject.LastName = "Doe";
 			testObject.Birthdate = birthdate;
 			testObject.ObjectStatus = DataObjectStatus.Original;
+			testObject.IsDirty = false;
 			
 			testObject.BeginEdit();
 			testObject.FirstName = "Jane";
@@ -37,6 +38,7 @@ namespace MashedVVM.Test.Base
 			
 			Assert.IsTrue(
 				(testObject.ObjectStatus == DataObjectStatus.Modified)
+				&& (testObject.IsDirty)
 				&& (testObject.FirstName == "Jane")
 				&& (testObject.LastName == "Doe")
 				&& (testObject.FullName == "Jane Doe")
@@ -54,6 +56,7 @@ namespace MashedVVM.Test.Base
 			testObject.LastName = "Doe";
 			testObject.Birthdate = birthdate;
 			testObject.ObjectStatus = DataObjectStatus.Original;
+			testObject.IsDirty = false;
 			
 			testObject.BeginEdit();
 			testObject.FirstName = "Jane";
@@ -61,6 +64,7 @@ namespace MashedVVM.Test.Base
 			
 			Assert.IsTrue(
 				(testObject.ObjectStatus == DataObjectStatus.Original)
+				&& (testObject.IsDirty == false)
 				&& (testObject.FirstName == "John")
 				&& (testObject.LastName == "Doe")
 				&& (testObject.FullName == "John Doe")
