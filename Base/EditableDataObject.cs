@@ -36,7 +36,8 @@ namespace MashedVVM.Base
 			_mementoIgnoringProperties = new List<string>() 
 											{
 												"View", 
-												"VmTitle"
+												"VmTitle",
+												"IsDirty"
 											};
 		}
 
@@ -77,6 +78,12 @@ namespace MashedVVM.Base
 					pi.SetValue(this, _memento[pi.Name], null);
 				}
 			}
+			
+			// IsDirty has to be reset explititely because the restore 
+			// of the values from the memento sets IsDirty to true and
+			// this is why IsDirty is also ignored by caching the original
+			// values.
+			IsDirty = false;
 			EndEdit();
 		}
 
