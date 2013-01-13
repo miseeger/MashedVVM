@@ -44,14 +44,17 @@ namespace MashedVVM.Base
 
 		public void BeginEdit()
 		{
-			_memento = new Dictionary<string, object>();
-			PropertyInfo[] properties = this.GetType().GetProperties();
-			foreach (PropertyInfo pi in properties)
+			if (_memento != null)
 			{
-				// ignore R/O properties and _mementoIgnoringProperties!
-				if (pi.CanWrite && !_mementoIgnoringProperties.Contains(pi.Name))
+				_memento = new Dictionary<string, object>();
+				PropertyInfo[] properties = this.GetType().GetProperties();
+				foreach (PropertyInfo pi in properties)
 				{
-					_memento.Add(pi.Name, pi.GetValue(this, null));
+					// ignore R/O properties and _mementoIgnoringProperties!
+					if (pi.CanWrite && !_mementoIgnoringProperties.Contains(pi.Name))
+					{
+						_memento.Add(pi.Name, pi.GetValue(this, null));
+					}
 				}
 			}
 		}
@@ -70,12 +73,15 @@ namespace MashedVVM.Base
 
 		public void CancelEdit()
 		{
-			PropertyInfo[] properties = this.GetType().GetProperties();
-			foreach (PropertyInfo pi in properties)
+			if (_memento != null)
 			{
-				if (pi.CanWrite && !_mementoIgnoringProperties.Contains(pi.Name))
+				PropertyInfo[] properties = this.GetType().GetProperties();
+				foreach (PropertyInfo pi in properties)
 				{
-					pi.SetValue(this, _memento[pi.Name], null);
+					if (pi.CanWrite && !_mementoIgnoringProperties.Contains(pi.Name))
+					{
+						pi.SetValue(this, _memento[pi.Name], null);
+					}
 				}
 			}
 			
