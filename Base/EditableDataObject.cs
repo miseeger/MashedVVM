@@ -9,91 +9,81 @@
  *                                                                           *
  * ************************************************************************* */
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Reflection;
-using System.Text;
+using System; 
+using System.Collections.Generic; 
+using System.Linq; 
+using MashedVVM.Base.Contracts; 
+using MashedVVM.Base.Enum; 
+using MashedVVM.Resources; 
+ 
+namespace MashedVVM.Base 
+{ 
 
-using MashedVVM.Base.Contracts;
-using MashedVVM.Base.Enum;
-using MashedVVM.Base.Events;
-
-namespace MashedVVM.Base
-{
-
-	public class EditableDataObject: DataObject, IEditableDataObject
+	public class EditableDataObject: DataObject, IEditableDataObject 
 	{
 
-		private Dictionary<string, object> _memento;
-		private IEnumerable<string> _mementoIgnoringProperties;
+		private readonly Dictionary<string, object> _propBackup; 
+		private bool _inTxn; 
 
 
-		public EditableDataObject()
-		{
-			_mementoIgnoringProperties = new List<string>() 
-											{
-												"View", 
-												"VmTitle",
-												"IsDirty"
-											};
-		}
+		protected EditableDataObject() 
+		{ 
+			_propBackup = new Dictionary<string, object>(); 
+		} 
 
 
-		public void BeginEdit()
-		{
-			if (_memento != null)
-			{
-				_memento = new Dictionary<string, object>();
-				PropertyInfo[] properties = this.GetType().GetProperties();
-				foreach (PropertyInfo pi in properties)
-				{
-					// ignore R/O properties and _mementoIgnoringProperties!
-					if (pi.CanWrite && !_mementoIgnoringProperties.Contains(pi.Name))
-					{
-						_memento.Add(pi.Name, pi.GetValue(this, null));
-					}
-				}
-			}
-		}
+		public void BeginEdit() 
+		{ 
+			if (!_inTxn) 
+			{ 
+				var properties = GetType().GetProperties(); 
+				foreach (var pi in properties.Where(pi => pi.CanWrite  
+					&& !Names.PropBackupIgnoringProperties.Contains(pi.Name))) 
+				{ 
+					try 
+					{ 
+						_propBackup.Add(pi.Name, pi.GetValue(this, null)); 
+					} 
+					catch(ArgumentException) 
+					{ 
+						_propBackup[pi.Name] = pi.GetValue(this, null); 
+					} 
+				} 
+				_inTxn = true; 
+			} 
+		} 
 
 
-		public void EndEdit()
-		{
+		public void EndEdit() 
+		{ 
+			if (_inTxn) 
+			{ 
+				_propBackup.Clear(); 
+				_inTxn = false; 
+			} 
+		} 
 
-			if (_memento != null)
-			{
-				_memento = null;
-			}
 
-		}
+		public void CancelEdit() 
+		{ 
+			if (_inTxn) 
+			{ 
+				var properties = GetType().GetProperties(); 
 
+				foreach (var pi in properties.Where(pi => pi.CanWrite  
+					&& !Names.PropBackupIgnoringProperties.Contains(pi.Name))) 
+				{ 
+					pi.SetValue(this, _propBackup[pi.Name], null); 
+				} 
+ 
+				IsDirty = (bool) _propBackup["IsDirty"]; 
+				ObjectStatus = (DataObjectStatus) _propBackup["ObjectStatus"]; 
+				_inTxn = false; 
+			} 
 
-		public void CancelEdit()
-		{
-			if (_memento != null)
-			{
-				PropertyInfo[] properties = this.GetType().GetProperties();
-				foreach (PropertyInfo pi in properties)
-				{
-					if (pi.CanWrite && !_mementoIgnoringProperties.Contains(pi.Name))
-					{
-						pi.SetValue(this, _memento[pi.Name], null);
-					}
-				}
-			}
-			
-			// IsDirty has to be reset explititely because the restore 
-			// of the values from the memento sets IsDirty to true and
-			// this is why IsDirty is also ignored by caching the original
-			// values.
-			IsDirty = false;
-			EndEdit();
-		}
+		} 
 
-	}
+	} 
 
 }
 

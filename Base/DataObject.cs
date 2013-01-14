@@ -9,82 +9,68 @@
  *                                                                           *
  * ************************************************************************* */
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Reflection;
-using System.Text;
-
-using MashedVVM.Base.Contracts;
-using MashedVVM.Base.Enum;
-using MashedVVM.Base.Events;
-
-namespace MashedVVM.Base
-{
-
-	public class DataObject: NotifyableObject, IDataObject
-	{
-
-		private IEnumerable<string> ObjectStatusIgnoringProperties;
-
-
-		protected DataObject()
-		{
-			ObjectStatusIgnoringProperties = new List<string>() 
-												{ 
-													"IsBusy", 
-													"IsDirty", 
-													"HasErrors", 
-													"IsValid", 
-													"View",
-													"VmTitle"
-												};
-
-			PropertyChanged += (o, e) =>
-			{
-				if (ObjectStatus == DataObjectStatus.Original
-					&& !(e.PropertyName.Equals(ExtractPropertyName(() => ObjectStatus))
-						|| ObjectStatusIgnoringProperties.Contains(e.PropertyName)))
-				{
-					ObjectStatus = DataObjectStatus.Modified;
-					IsDirty = true;
-				}
-			};
-
-		}
-
-
-		private DataObjectStatus _objectStatus = DataObjectStatus.Original;
-		public DataObjectStatus ObjectStatus
-		{
-			get { return _objectStatus; }
-			set
-			{
-				if (_objectStatus != value)
-				{
-					_objectStatus = value;
-					RaisePropertyChanged(() => ObjectStatus);
-				}
-			}
-		}
-
-
-		private bool _isDirty = false;
-		public bool IsDirty
-		{
-			get { return _isDirty; }
-			set
-			{
-				if(_isDirty != value)
-				{
-					_isDirty = value;
-					RaisePropertyChanged(() =>  IsDirty);
-				}
-			}
-		}
-
-	}
-
-}
+using System.Linq; 
+using MashedVVM.Base.Contracts; 
+using MashedVVM.Base.Enum; 
+using MashedVVM.Resources; 
+ 
+namespace MashedVVM.Base 
+{ 
+ 
+	public class DataObject: NotifyableObject, IDataObject 
+	{ 
+ 
+		protected DataObject() 
+		{ 
+			PropertyChanged += (o, e) => 
+			{ 
+				if (ObjectStatus == DataObjectStatus.Original 
+				    && (!Names.ObjectStatusIgnoringProperties.Contains(e.PropertyName)))
+				{ 
+					ObjectStatus = DataObjectStatus.Modified; 
+					IsDirty = true; 
+				} 
+			}; 
+ 
+		} 
+ 
+ 
+		private DataObjectStatus _objectStatus = DataObjectStatus.Original; 
+		public DataObjectStatus ObjectStatus 
+		{ 
+			get { return _objectStatus; } 
+			set 
+			{ 
+				if (_objectStatus != value) 
+				{ 
+					_objectStatus = value; 
+					RaisePropertyChanged(() => ObjectStatus); 
+				} 
+			} 
+		} 
+ 
+ 
+		private bool _isDirty = false; 
+		public bool IsDirty 
+		{ 
+			get { return _isDirty; } 
+			set 
+			{ 
+				if(_isDirty != value) 
+				{ 
+					_isDirty = value; 
+					RaisePropertyChanged(() =>  IsDirty); 
+				} 
+			} 
+		} 
+ 
+ 
+		public void ResetStatus() 
+		{ 
+			IsDirty = false; 
+			ObjectStatus = DataObjectStatus.Original; 
+		} 
+ 
+	} 
+ 
+} 

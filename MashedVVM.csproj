@@ -107,6 +107,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\MashedVVMResources.cs" />
+    <Compile Include="Resources\Names.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Base" />
