@@ -20,7 +20,8 @@ namespace MashedVVM.Resources
 			PropBackupIgnoringProperties = new List<string> 
 											   { 
 												   "View", 
-												   "VmTitle" 
+												   "VmTitle",
+												   "IsDirty"
 											   }; 
  
 		public static IEnumerable<string> 

@@ -52,7 +52,8 @@ namespace MashedVVM.Test.Base
 			testObject.ObjectStatus = DataObjectStatus.Deleted;
 			Assert.IsTrue(
 				(testObject.ObjectStatus == DataObjectStatus.Deleted)
-				&& (testObject.ChangedPropertyName == "ObjectStatus")
+				&& (testObject.IsDirty == true)
+				&& (testObject.ChangedPropertyName == "IsDirty")
 			);
 		}
 
@@ -115,6 +116,19 @@ namespace MashedVVM.Test.Base
 			var testObject = new DataObjectToTest();
 			testObject.Name = "TestName";
 			Assert.IsTrue(testObject.IsDirty == true);
+		}
+
+
+		[Test]
+		public void ResetObjectTest()
+		{
+			var testObject = new DataObjectToTest();
+			testObject.Name = "TestName";
+			testObject.ResetStatus();
+			Assert.IsTrue(
+				(testObject.IsDirty ==   false)
+				&& (testObject.ObjectStatus == DataObjectStatus.Original)
+			);
 		}
 
 	}

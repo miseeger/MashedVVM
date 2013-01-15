@@ -28,7 +28,6 @@ namespace MashedVVM.Base
 				    && (!Names.ObjectStatusIgnoringProperties.Contains(e.PropertyName)))
 				{ 
 					ObjectStatus = DataObjectStatus.Modified; 
-					IsDirty = true; 
 				} 
 			}; 
  
@@ -43,9 +42,15 @@ namespace MashedVVM.Base
 			{ 
 				if (_objectStatus != value) 
 				{ 
-					_objectStatus = value; 
-					RaisePropertyChanged(() => ObjectStatus); 
-				} 
+					_objectStatus = value;
+					RaisePropertyChanged(() => ObjectStatus);
+					var newIsDirty = (_objectStatus != DataObjectStatus.Original);
+					if (_isDirty != newIsDirty)
+					{
+						_isDirty = newIsDirty;
+						RaisePropertyChanged(() =>  IsDirty); 
+					} 
+				}
 			} 
 		} 
  
@@ -54,20 +59,11 @@ namespace MashedVVM.Base
 		public bool IsDirty 
 		{ 
 			get { return _isDirty; } 
-			set 
-			{ 
-				if(_isDirty != value) 
-				{ 
-					_isDirty = value; 
-					RaisePropertyChanged(() =>  IsDirty); 
-				} 
-			} 
 		} 
  
  
 		public void ResetStatus() 
 		{ 
-			IsDirty = false; 
 			ObjectStatus = DataObjectStatus.Original; 
 		} 
  

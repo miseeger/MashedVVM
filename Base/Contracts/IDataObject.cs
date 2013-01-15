@@ -19,7 +19,7 @@ namespace MashedVVM.Base.Contracts
 	public interface IDataObject
 	{
 		DataObjectStatus ObjectStatus { get; set; }
-		bool IsDirty { get; set; }
+		bool IsDirty { get; }
 	}
 
 }

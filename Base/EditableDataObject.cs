@@ -76,7 +76,6 @@ namespace MashedVVM.Base
 					pi.SetValue(this, _propBackup[pi.Name], null); 
 				} 
  
-				IsDirty = (bool) _propBackup["IsDirty"]; 
 				ObjectStatus = (DataObjectStatus) _propBackup["ObjectStatus"]; 
 				_inTxn = false; 
 			} 

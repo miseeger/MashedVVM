@@ -29,8 +29,7 @@ namespace MashedVVM.Test.Base
 			testObject.FirstName = "John";
 			testObject.LastName = "Doe";
 			testObject.Birthdate = birthdate;
-			testObject.ObjectStatus = DataObjectStatus.Original;
-			testObject.IsDirty = false;
+			testObject.ResetStatus();
 			
 			testObject.BeginEdit();
 			testObject.FirstName = "Jane";
@@ -55,8 +54,7 @@ namespace MashedVVM.Test.Base
 			testObject.FirstName = "John";
 			testObject.LastName = "Doe";
 			testObject.Birthdate = birthdate;
-			testObject.ObjectStatus = DataObjectStatus.Original;
-			testObject.IsDirty = false;
+			testObject.ResetStatus();
 			
 			testObject.BeginEdit();
 			testObject.FirstName = "Jane";
