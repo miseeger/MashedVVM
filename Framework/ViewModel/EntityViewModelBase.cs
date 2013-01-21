@@ -63,7 +63,7 @@ namespace MashedVVM.Framework.ViewModel
 		}
 
 
-		protected EntityViewModelBase()
+		public EntityViewModelBase()
 		{
 			InDesign = (bool)DependencyPropertyDescriptor
 				.FromProperty(DesignerProperties.IsInDesignModeProperty,
@@ -71,7 +71,7 @@ namespace MashedVVM.Framework.ViewModel
 		}
 
 
-		protected EntityViewModelBase(IView view) : this()
+		public EntityViewModelBase(IView view) : this()
 		{
 			if (view != null)
 			{
