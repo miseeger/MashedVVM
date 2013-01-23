@@ -30,26 +30,30 @@ namespace MashedVVM.Base
 					ObjectStatus = DataObjectStatus.Modified; 
 				} 
 			}; 
- 
 		} 
  
  
-		private DataObjectStatus _objectStatus = DataObjectStatus.Original; 
+		private DataObjectStatus _objectStatus = DataObjectStatus.Original;
 		public DataObjectStatus ObjectStatus 
 		{ 
 			get { return _objectStatus; } 
 			set 
 			{ 
-				if (_objectStatus != value) 
+				if (
+						(_objectStatus != value)
+				        && (
+							   (_objectStatus != DataObjectStatus.Added)
+							   && (
+									  (_objectStatus == DataObjectStatus.Original)
+							   		  || (_objectStatus == DataObjectStatus.Deleted && value == DataObjectStatus.Original)
+				            		  || (_objectStatus == DataObjectStatus.Modified && value != DataObjectStatus.Added)
+				            	   )
+							)
+				   )
 				{ 
 					_objectStatus = value;
+					IsDirty = (_objectStatus != DataObjectStatus.Original);
 					RaisePropertyChanged(() => ObjectStatus);
-					var newIsDirty = (_objectStatus != DataObjectStatus.Original);
-					if (_isDirty != newIsDirty)
-					{
-						_isDirty = newIsDirty;
-						RaisePropertyChanged(() =>  IsDirty); 
-					} 
 				}
 			} 
 		} 
@@ -59,6 +63,29 @@ namespace MashedVVM.Base
 		public bool IsDirty 
 		{ 
 			get { return _isDirty; } 
+			set 
+			{
+				if ((ObjectStatus != DataObjectStatus.Added && _isDirty != value) 
+				    || (ObjectStatus == DataObjectStatus.Added && _isDirty != value && value))
+				{	
+					_isDirty = value;
+					RaisePropertyChanged(() => IsDirty);
+					
+					if (_isDirty && ObjectStatus == DataObjectStatus.Original)
+					{
+						ObjectStatus = DataObjectStatus.Modified;
+					}
+					else
+					{
+						if (!_isDirty 
+						    && (ObjectStatus == DataObjectStatus.Modified
+						        || ObjectStatus == DataObjectStatus.Deleted))
+						{
+							ObjectStatus = DataObjectStatus.Original;
+						}
+					}
+				}
+			}
 		} 
  
  
