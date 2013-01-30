@@ -17,7 +17,7 @@ using System;
 namespace MashedVVM.Base.Attributes
 {
 
-	[AttributeUsage(System.AttributeTargets.Field, Inherited = false, AllowMultiple = false)]
+	[AttributeUsage(System.AttributeTargets.Field, Inherited = true, AllowMultiple = false)]
 	public sealed class ReevaluatePropertyAttribute : System.Attribute
 	{
 

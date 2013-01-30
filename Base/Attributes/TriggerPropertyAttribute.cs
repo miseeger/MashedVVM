@@ -17,7 +17,7 @@ using System;
 namespace MashedVVM.Base.Attributes
 {
 
-	[AttributeUsage(System.AttributeTargets.Method, Inherited = false, AllowMultiple = false)]
+	[AttributeUsage(System.AttributeTargets.Method, Inherited = true, AllowMultiple = false)]
 	public sealed class TriggerPropertyAttribute : System.Attribute
 	{
 
