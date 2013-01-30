@@ -68,6 +68,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\Attributes\IgnoreObjectStatusAttribute.cs" />
     <Compile Include="Base\Attributes\ReevaluatePropertyAttribute.cs" />
     <Compile Include="Base\Attributes\TriggerPropertyAttribute.cs" />
     <Compile Include="Base\Contracts\IDataObject.cs" />
