@@ -8,12 +8,14 @@
  * ************************************************************************* */
 
 using System;
+using MashedVVM.Base.Attributes;
 using MashedVVM.Framework.Contracts;
 using MashedVVM.Framework.ViewModel;
 
 namespace MashedVVM.Test.Framework.TestObjects
 {
 
+	[IgnoreObjectStatus(true)]
 	public class EntityViewModelBaseToTest: EntityViewModelBase
 	{
 

@@ -10,6 +10,7 @@
  * ************************************************************************* */
  
 using System;
+using MashedVVM.Base.Enum;
 using MashedVVM.Test.Framework.TestObjects;
 using NUnit.Framework;
 
@@ -42,9 +43,19 @@ namespace MashedVVM.Test.Framework
 			var testViewModel = new EntityViewModelBaseToTest(testView);
 			Assert.IsFalse(testViewModel.InDesign);
 		}
-
+		
 
 		[Test]
+		public void InDirtyTrueTest()
+		{
+			var testView = new UserControlViewBaseToTest();
+			var testViewModel = new EntityViewModelBaseToTest(testView);
+			testViewModel.IsDirty = true;
+			Assert.IsTrue(testViewModel.IsDirty && testViewModel.ObjectStatus == DataObjectStatus.Ignore);
+		}
+		
+
+ 		[Test]
 		public void ToStringTest()
 		{
 			var testView = new UserControlViewBaseToTest();
