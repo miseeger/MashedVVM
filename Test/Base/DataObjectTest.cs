@@ -25,7 +25,7 @@ namespace MashedVVM.Test.Base
 		[TestFixtureSetUp]
 		public void SetUp()
 		{
-			do2Test = new DataObjectToTest();
+			// TODO: Fill with setup code.
 		}
 
 

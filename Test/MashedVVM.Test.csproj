@@ -61,8 +61,10 @@
     </Compile>
     <Compile Include="Base\DataObjectStatusToImageConverterTest.cs" />
     <Compile Include="Base\DataObjectTest.cs" />
+    <Compile Include="Base\DataObjectTestIgnoreState.cs" />
     <Compile Include="Base\EditableDataObjectTest.cs" />
     <Compile Include="Base\NotifyableObjectTest.cs" />
+    <Compile Include="Base\TestObjects\DataObjectToTestIgnoreState.cs" />
     <Compile Include="Base\TestObjects\DataObjectToTest.cs" />
     <Compile Include="Base\TestObjects\EditableDataObjectToTest.cs" />
     <Compile Include="Base\TestObjects\NotifyableObjectToTest.cs" />
