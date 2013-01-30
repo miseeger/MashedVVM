@@ -14,7 +14,7 @@ namespace MashedVVM.Base.Enum
 	
 	public enum DataObjectStatus
 	{
-		Original, Modified, Added, Deleted
+		Ignore, Original, Modified, Added, Deleted
 	}
 
 }
