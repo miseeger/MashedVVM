@@ -62,7 +62,43 @@ namespace MashedVVM.Test.Framework
 			Assert.IsTrue
 			(
 				testViewModel.ChangedPropertyName == "IsBusy"
+				&& testViewModel.IsDirty == false
 				&& testViewModel.IsBusy
+			);
+		}
+		
+		
+		[Test]
+		public void IsDirtyDirectTest()
+		{
+			var testView = new UserControlViewBaseToTest();
+			var testViewModel = new ViewModelBaseToTest(testView);
+			testViewModel.IsDirty = true;
+			Assert.IsTrue
+			(
+				testViewModel.ChangedPropertyName == "IsDirty"
+				&& testViewModel.IsDirty == true
+			);
+		}
+
+
+		[Test]
+		public void IsDirtyAutoTest()
+		{
+			
+			var testView = new UserControlViewBaseToTest();
+			var testViewModel = new ViewModelBaseToTest(testView)
+				{
+					Name = "John"
+					,IsDirty = false
+				};
+			var isDirtyInit = testViewModel.IsDirty;
+			testViewModel.Name = "Jack";
+			Assert.IsTrue
+			(
+				isDirtyInit == false
+				&& testViewModel.IsDirty
+				&& testViewModel.ChangedPropertyName == "Name"
 			);
 		}
 

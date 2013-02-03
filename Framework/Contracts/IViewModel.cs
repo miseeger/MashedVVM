@@ -18,6 +18,7 @@ namespace MashedVVM.Framework.Contracts
 	{
 		IView View { get; set; }
 		bool IsBusy { get; set; }
+		bool IsDirty {get; set; }
 		bool InDesign { get; }
 		string VmTitle { get; set; }
 		void Initialize();

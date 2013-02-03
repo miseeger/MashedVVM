@@ -21,6 +21,20 @@ namespace MashedVVM.Test.Framework.TestObjects
 		public string ChangedPropertyName { get; set; }
 		public Boolean Initialized { get; set; }
 
+		private string _name;
+		public string Name
+		{
+			get { return _name; }
+			set
+			{ 
+				if(_name != value)
+				{
+					_name = value;
+					RaisePropertyChanged(() => Name);
+				}
+			}	
+		}
+
 
 		public ViewModelBaseToTest(IView view): base(view)
 		{

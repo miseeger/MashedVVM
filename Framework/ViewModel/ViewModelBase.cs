@@ -8,10 +8,12 @@
  * ************************************************************************* */
 
 using System;
+using System.Linq;
 using System.ComponentModel;
 using System.Windows;
 using MashedVVM.Base;
 using MashedVVM.Framework.Contracts;
+using MashedVVM.Resources;
 
 namespace MashedVVM.Framework.ViewModel
 {
@@ -26,6 +28,21 @@ namespace MashedVVM.Framework.ViewModel
 			{
 				_view = value;
 				_view.ViewModel = this;
+			}
+		}
+
+
+		private bool _isDirty;
+		public bool IsDirty
+		{
+			get { return _isDirty; }
+			set
+			{
+				if (_isDirty != value)
+				{
+					_isDirty = value;
+					RaisePropertyChanged(() => IsDirty);
+				}
 			}
 		}
 
@@ -65,6 +82,16 @@ namespace MashedVVM.Framework.ViewModel
 
 		public ViewModelBase()
 		{
+
+			PropertyChanged += (o, e) =>
+			{ 
+				if (!Names.IsDrityIgnoringProperties.Contains(e.PropertyName) 
+				    && !IsDirty)
+				{
+					IsDirty = true;	
+				}
+			};
+
 			InDesign = (bool)DependencyPropertyDescriptor
 				.FromProperty(DesignerProperties.IsInDesignModeProperty,
 					typeof(FrameworkElement)).Metadata.DefaultValue;
