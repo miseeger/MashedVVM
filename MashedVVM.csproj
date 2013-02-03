@@ -98,8 +98,6 @@
     <Compile Include="Framework\Locator.cs" />
     <Compile Include="Framework\MessageBroker.cs" />
     <Compile Include="Framework\RelayCommand.cs" />
-    <Compile Include="Framework\ViewModel\EntityViewModelBase.cs" />
-    <Compile Include="Framework\ViewModel\StatusViewModelBase.cs" />
     <Compile Include="Framework\ViewModel\ViewModelBase.cs" />
     <Compile Include="Framework\View\UserControlViewBase.cs" />
     <Compile Include="Framework\View\WindowViewBase.cs" />
