@@ -23,26 +23,30 @@ namespace MashedVVM.Resources
 		public static string IsBusyName = "IsBusy";
 		public static string HasErrorsName = "HasErrors";
 		public static string IsValidName = "IsValid";
+		public static string InDesignName = "InDesign";
 		
 		public static IEnumerable<string>
 			PropBackupIgnoringProperties = new List<string> 
 											   { 
-												  ViewName, 
-												  VmTitleName,
-												  IsDirtyName
+												  ViewName
+												  ,VmTitleName
 											   }; 
  
 		public static IEnumerable<string> 
 			ObjectStatusIgnoringProperties = new List<string>() 
 												 { 
-													 ObjectStatusName,
-													 IsBusyName,
-													 IsDirtyName, 
-													 HasErrorsName, 
-													 IsValidName, 
-													 ViewName, 
-													 VmTitleName 
+													 ObjectStatusName
+													 ,IsBusyName
+													 ,IsDirtyName
+													 ,HasErrorsName 
+													 ,IsValidName
+													 ,InDesignName
+													 ,ViewName
+													 ,VmTitleName 
 												 }; 
+		
+		public static IEnumerable<string> 
+			IsDrityIgnoringProperties = ObjectStatusIgnoringProperties;
 
 	} 
 
