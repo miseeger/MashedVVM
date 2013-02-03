@@ -427,16 +427,111 @@ namespace MashedVVM.Test.Base
 					&& (testObject.ObjectStatus == DataObjectStatus.Added)
 				);
 		}
+		
+		
+		[Test]
+		public void SetIgnoreObjectStatusTrueFromOriginalTest()
+		{
+			var testObject = new DataObjectToTest()
+								 {	
+									 Name = "John"
+									 ,ObjectStatus = DataObjectStatus.Original
+								 };
+			testObject.IgnoreObjectStatus = true;
+			Assert.IsTrue(
+				(testObject.IgnoreObjectStatus == true)
+				&& (testObject.IsDirty == false)
+				&& (testObject.ObjectStatus == DataObjectStatus.Ignore)
+			);
+		}
+		
+		
+		[Test]
+		public void SetIgnoreObjectStatusTrueFromModifiedAndNotIgnoredStatusTest()
+		{
+			var testObject = new DataObjectToTest()
+								 {	
+									 Name = "John"
+								 };
+			testObject.IgnoreObjectStatus = true;
+			Assert.IsTrue(
+				(testObject.IgnoreObjectStatus == true)
+				&& (testObject.IsDirty == true)
+				&& (testObject.ObjectStatus == DataObjectStatus.Ignore)
+			);
+		}
+		
+		
+		[Test]
+		public void SetNotIgnoreObjectStatusTrueFromModifiedAndIgnoredStatusTest()
+		{
+			var testObject = new DataObjectToTest()
+								 {	
+									 Name = "John"
+									 ,IgnoreObjectStatus = true
+								 };
+			testObject.IgnoreObjectStatus = false;
+			Assert.IsTrue(
+				(testObject.IgnoreObjectStatus == false)
+				&& (testObject.IsDirty == true)
+				&& (testObject.ObjectStatus == DataObjectStatus.Modified)
+			);
+		}
+		
+		
+				[Test]
+		public void SetNotIgnoreObjectStatusTrueFromOriginalAndIgnoredStatusTest()
+		{
+			var testObject = new DataObjectToTest()
+								 {	
+									 Name = "John"
+									 ,ObjectStatus = DataObjectStatus.Original
+									 ,IgnoreObjectStatus = true
+								 };
+			testObject.IgnoreObjectStatus = false;
+			Assert.IsTrue(
+				(testObject.IgnoreObjectStatus == false)
+				&& (testObject.IsDirty == false)
+				&& (testObject.ObjectStatus == DataObjectStatus.Original)
+			);
+		}
 
 
-		
-		
-		
-		
-		
-		
 
-
+		[Test]
+		public void SetIsDirtyFalseFromIgnoredObjectStatusTest()
+		{
+			var testObject = new DataObjectToTest()
+								 {	
+									 Name = "John"
+									 ,IgnoreObjectStatus = true
+								 };
+			testObject.IsDirty = false;
+			Assert.IsTrue(
+				(testObject.IgnoreObjectStatus ==     true)
+				&& (testObject.IsDirty == false)
+				&& (testObject.ObjectStatus == DataObjectStatus.Ignore)
+			);
+		}
+		
+		
+		[Test]
+		public void SetIsDirtyTrueFromIgnoredObjectStatusTest()
+		{
+			var testObject = new DataObjectToTest()
+								 {	
+									 Name = "John"
+									 ,IsDirty = false
+									 ,IgnoreObjectStatus = true
+								 };
+			testObject.IsDirty =     true;
+			Assert.IsTrue(
+				(testObject.IgnoreObjectStatus == true)
+				&& (testObject.IsDirty == true)
+				&& (testObject.ObjectStatus == DataObjectStatus.Ignore)
+			);
+		}
+		
 
 		[Test]
 		public void ResetObjectTest()
