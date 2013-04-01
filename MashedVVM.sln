@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MashedVVM.Test", "Test\Mash
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MashedVVM.Persistence", "Persistence\MashedVVM.Persistence.csproj", "{478433E4-CDB6-4041-ABCF-0678A6AF4F5F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MashedVVM.Prism", "Prism\MashedVVM.Prism.csproj", "{D78409B2-BEFB-43BE-B828-7D8EB8FEFFB3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -45,5 +47,13 @@ Global
 		{EDE7F6B3-0476-49C5-892C-CD2071A264D7}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{EDE7F6B3-0476-49C5-892C-CD2071A264D7}.Release|Any CPU.Build.0 = Release|x86
 		{EDE7F6B3-0476-49C5-892C-CD2071A264D7}.Release|Any CPU.ActiveCfg = Release|x86
+		{D78409B2-BEFB-43BE-B828-7D8EB8FEFFB3}.Debug|x86.Build.0 = Debug|Any CPU
+		{D78409B2-BEFB-43BE-B828-7D8EB8FEFFB3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D78409B2-BEFB-43BE-B828-7D8EB8FEFFB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D78409B2-BEFB-43BE-B828-7D8EB8FEFFB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D78409B2-BEFB-43BE-B828-7D8EB8FEFFB3}.Release|x86.Build.0 = Release|Any CPU
+		{D78409B2-BEFB-43BE-B828-7D8EB8FEFFB3}.Release|x86.ActiveCfg = Release|Any CPU
+		{D78409B2-BEFB-43BE-B828-7D8EB8FEFFB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D78409B2-BEFB-43BE-B828-7D8EB8FEFFB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 EndGlobal
