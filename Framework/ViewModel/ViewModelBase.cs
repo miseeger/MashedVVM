@@ -8,9 +8,11 @@
  * ************************************************************************* */
 
 using System;
-using System.Linq;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows;
+using System.Windows.Media;
+
 using MashedVVM.Base;
 using MashedVVM.Framework.Contracts;
 using MashedVVM.Resources;
@@ -78,6 +80,22 @@ namespace MashedVVM.Framework.ViewModel
 				}
 			}
 		}
+		
+		
+		private ImageSource _vmImage;
+		public ImageSource VmImage
+		{
+			get { return _vmImage; }
+			set
+			{
+				if(_vmImage != value)
+				{
+					_vmImage = value;
+					RaisePropertyChanged(() => VmImage);
+				}
+			}
+		}
+
 
 
 		public ViewModelBase()

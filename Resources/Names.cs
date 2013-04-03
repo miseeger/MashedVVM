@@ -19,6 +19,7 @@ namespace MashedVVM.Resources
 		public static string IsDirtyName = "IsDirty";
 		public static string ViewName = "View";
 		public static string VmTitleName = "VmTitle";
+		public static string VmImageName = "VmImage";
 		public static string ObjectStatusName = "ObjectStatus";
 		public static string IsBusyName = "IsBusy";
 		public static string HasErrorsName = "HasErrors";
@@ -30,6 +31,7 @@ namespace MashedVVM.Resources
 											   { 
 												  ViewName
 												  ,VmTitleName
+												  ,VmImageName
 											   }; 
  
 		public static IEnumerable<string> 
@@ -42,7 +44,8 @@ namespace MashedVVM.Resources
 													 ,IsValidName
 													 ,InDesignName
 													 ,ViewName
-													 ,VmTitleName 
+													 ,VmTitleName
+													 ,VmImageName													 	
 												 }; 
 		
 		public static IEnumerable<string> 
