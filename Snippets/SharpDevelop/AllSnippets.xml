@@ -1,0 +1,194 @@
+          <CodeSnippet>
+            <Name>#if</Name>
+            <Text>#if ${Expression}
+	${Selection}
+#endif</Text>
+            <Description>conditional compilation block</Description>
+            <Keyword>event</Keyword>
+          </CodeSnippet>
+          <CodeSnippet>
+            <Name>#region</Name>
+            <Text>#region ${name=Regionname}
+     ${Selection}
+#endregion</Text>
+            <Description>Region (with surrounding)</Description>
+            <Keyword>event</Keyword>
+          </CodeSnippet>
+          <CodeSnippet>
+            <Name>enum</Name>
+            <Text>enum ${name}
+{
+	${Selection}
+}</Text>
+            <Description>Enum</Description>
+            <Keyword>enum</Keyword>
+          </CodeSnippet>
+          <CodeSnippet>
+            <Name>indexer</Name>
+            <Text>${access} ${type} this[${indextype} index]
+{
+	get {${Caret} /* return the specified index here */ }
+	set { /* set the specified index to value here */ }
+}</Text>
+            <Description>Creates an Indexer</Description>
+            <Keyword>event</Keyword>
+          </CodeSnippet>
+          <CodeSnippet>
+            <Name>invokeevt</Name>
+            <Text>${EventhandlerType} handler = ${event};
+if (handler != null)
+{
+	handler(this, new ${Selection});
+}</Text>
+            <Description>Securely invoke Eventhandler</Description>
+            <Keyword>event</Keyword>
+          </CodeSnippet>
+          <CodeSnippet>
+            <Name>mvpropn</Name>
+            <Text>private ${type=object} _${toFieldName(name)};
+public ${type} ${name=Property}
+{
+	get { return _${toFieldName(name)}; }
+	set
+	{ 
+		if(_${toFieldName(name)} != value)
+		{
+			_${toFieldName(name)} = value;
+			RaisePropertyChanged("${name}");
+		}
+	}	
+}</Text>
+            <Description>Property with Notification (RaisePropertChanged with magic String)</Description>
+            <Keyword>event</Keyword>
+          </CodeSnippet>
+          <CodeSnippet>
+            <Name>mvpropnl</Name>
+            <Text>private ${type=object} _${toFieldName(name)};
+public ${type} ${name=Property}
+{
+	get { return _${toFieldName(name)}; }
+	set
+	{ 
+		if(_${toFieldName(name)} != value)
+		{
+			_${toFieldName(name)} = value;
+			RaisePropertyChanged(() =&gt; ${name});
+		}
+	}	
+}</Text>
+            <Description>Property with Notification (RaisePropertChanged with Lambda)</Description>
+            <Keyword>event</Keyword>
+          </CodeSnippet>
+          <CodeSnippet>
+            <Name>mvrcmd</Name>
+            <Text>private RelayCommand _${toFieldName(name)}Command;
+public RelayCommand ${name=Action}Command
+{
+	get { return _${toFieldName(name)}Command ?? (_${toFieldName(name)}Command = new RelayCommand(${name}Selected)); }
+}
+
+private void ${name}()
+{
+	${Selection}
+}</Text>
+            <Description>RelayCommand (without CanExecute)</Description>
+            <Keyword>event</Keyword>
+          </CodeSnippet>
+          <CodeSnippet>
+            <Name>mvrcmdce</Name>
+            <Text>private RelayCommand _${toFieldName(name)}Command;
+public RelayCommand ${name=Action}Command
+{
+	get { return _${toFieldName(name)}Command ?? (_${toFieldName(name)}Command = new RelayCommand(${name}, CanExecute${name})); }
+}
+
+private void ${name}()
+{
+	${Selection}
+}
+
+private bool CanExecute${name}()
+{
+	return ((${condition}));
+}</Text>
+            <Description>RelayCommand with CanExecute</Description>
+            <Keyword>event</Keyword>
+          </CodeSnippet>
+          <CodeSnippet>
+            <Name>mvrcmdcep</Name>
+            <Text>private RelayCommand&lt;${type=object}&gt; _${toFieldName(name)}Command;
+public RelayCommand&lt;${type}&gt; ${name=Action}Command
+{
+	get { return _${toFieldName(name)}Command ?? (_${toFieldName(name)}Command = new RelayCommand&lt;${type}&gt;(${name}, CanExecute${name})); }
+}
+
+private void ${name}(${type} ${parameter})
+{
+	${Selection}
+}
+
+private bool CanExecute${name}(${type} ${parameter})
+{
+	return (${condition});
+}</Text>
+            <Description>RelayCommand with CanExecute and Parameters</Description>
+            <Keyword>event</Keyword>
+          </CodeSnippet>
+          <CodeSnippet>
+            <Name>mvrcmdp</Name>
+            <Text>private RelayCommand&lt;${type=object}&gt; _${toFieldName(name)}Command;
+public RelayCommand&lt;${type}&gt; ${name=Action}Command
+{
+	get { return _${toFieldName(name)}Command ?? (_${toFieldName(name)}Command = new RelayCommand&lt;${type}&gt;(${name})); }
+}
+
+private void ${name}(${type} ${parameter})
+{
+	${Selection}
+}</Text>
+            <Description>RelayCommand with Parameters (without CanExecute)</Description>
+            <Keyword>event</Keyword>
+          </CodeSnippet>
+          <CodeSnippet>
+            <Name>nutest</Name>
+            <Text>[Test]
+public void ${TestName}Test()
+{
+	Assert.IsTrue(${Selection});
+}</Text>
+            <Description>NUnit-Test</Description>
+            <Keyword>event</Keyword>
+          </CodeSnippet>
+          <CodeSnippet>
+            <Name>propdp</Name>
+            <Text>public static readonly DependencyProperty ${name}Property =
+	DependencyProperty.Register("${name}", typeof(${type}), typeof(${ClassName}),
+	                            new FrameworkPropertyMetadata());
+
+public ${type=int} ${name=Property} {
+	get { return (${type})GetValue(${name}Property); }
+	set { SetValue(${name}Property, value); }
+}${Caret}</Text>
+            <Description>Dependency Property</Description>
+            <Keyword>event</Keyword>
+          </CodeSnippet>
+          <CodeSnippet>
+            <Name>stdevent</Name>
+            <Text>public event EventHandler ${name=Action}Event;
+
+protected virtual void On${toPropertyName(name)}
+{
+	EventHandler handler = ${toPropertyName(name)}Event;
+	if(handler != null)
+	{
+		handler(this, new EventArgs());
+	}
+}
+
+protected void Raise${toPropertyName(name)}
+{
+	On${toPropertyName(name)};
+}</Text>
+            <Description>Standard Eventhandler (with plain EventArgs)</Description>
+            <Keyword>event</Keyword>
+          </CodeSnippet>
